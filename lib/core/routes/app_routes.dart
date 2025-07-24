@@ -1,0 +1,77 @@
+import 'package:annale_driver/modules/auth/bindings/auth_bindings.dart';
+import 'package:annale_driver/modules/auth/views/app_success_screen.dart';
+import 'package:annale_driver/modules/auth/views/login_screen.dart';
+import 'package:annale_driver/modules/auth/views/signup_screen.dart';
+import 'package:annale_driver/modules/auth/views/verification_screen.dart';
+import 'package:annale_driver/modules/dashboard/bindings/dashboard_binding.dart';
+import 'package:annale_driver/modules/dashboard/views/dashboard_screen.dart';
+import 'package:annale_driver/modules/onboarding/views/onboarding_screen.dart';
+import 'package:annale_driver/modules/splash/views/splash_screen.dart';
+import 'package:get/get.dart';
+
+/// 🔗 Route Names
+class AppRoutes {
+  static const String splash = '/splash';
+  static const String onboarding = '/onbording';
+  static const String login = '/login';
+  static const String register = '/register';
+  static const String otp = '/otp';
+
+  static const String dashboard = '/dashboard';
+  static const String home = '/home';
+  static const String rides = '/rides';
+  static const String wallet = '/wallet';
+  static const String account = '/account';
+  static const String passwordChanged = '/password-changed';
+}
+
+/// 🌐 GetX Pages Configuration
+class AppPages {
+  static final routes = [
+    GetPage(
+      name: AppRoutes.splash,
+      page: () => SplashScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: AppRoutes.login,
+      page: () => const LoginScreen(),
+      binding: AuthBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.register,
+      page: () => const SignupScreen(),
+      binding: AuthBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.otp,
+      page: () => const VerificationScreen(),
+      binding: AuthBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.passwordChanged,
+      page: () => const AppSuccessScreen(),
+      binding: AuthBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.dashboard,
+      page: () => DashboardScreen(),
+      binding: DashboardBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.onboarding,
+      page: () => OnboardingScreen(),
+      // binding: DashboardBinding(),
+    ),
+
+    // Optional direct access
+    // GetPage(name: AppRoutes.home, page: () => HomeScreen()),
+    // GetPage(name: AppRoutes.rides, page: () => const RidesScreen()),
+    // GetPage(name: AppRoutes.wallet, page: () => const WalletsScreen()),
+    // GetPage(
+    //   name: AppRoutes.account,
+    //   page: () => AccountScreen(),
+    //   binding: AccountBinding(),
+    // ),
+  ];
+}

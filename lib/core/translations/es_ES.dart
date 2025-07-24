@@ -1,0 +1,339 @@
+final Map<String, String> esES = {
+  'Help & Support': 'Ayuda y soporte',
+  'Privacy Security': 'Privacidad y seguridad',
+  'Language': 'Idioma',
+  'Logout': 'Cerrar sesión',
+  'Deactivate Account': 'Desactivar cuenta',
+  'My Address': 'Mi dirección',
+  'User Name': 'Nombre de usuario',
+  'Notification Settings': 'Configuración de notificaciones',
+  'Wallet': 'Billetera',
+  'Referral and Loyalty': 'Referencias y lealtad',
+  'My Rides': 'Mis viajes',
+  'Terms & Conditions': 'Términos y condiciones',
+  'Change Mode': 'Cambiar modo',
+  'Rate AnnAle on Store': 'Califica AnnAle en la tienda',
+  'Payment Methods': 'Métodos de pago',
+  'Change Password': 'Cambiar contraseña',
+  'Help & Emergency Contact': 'Ayuda y contacto de emergencia',
+  'Home': 'Casa',
+
+  'Work': 'Trabajo',
+
+  'Easily book your rides faster with saved locations like home, work, or frequent destinations.':
+      'Reserva fácilmente tus viajes más rápido con ubicaciones guardadas como casa, trabajo o destinos frecuentes.',
+  'My Addresses': 'Mis direcciones',
+
+  'Airport': 'Aeropuerto',
+  'Edit Address': 'Editar dirección',
+  'Save': 'Guardar',
+  'Full Address': 'Dirección completa',
+  'Add New Address': 'Agregar nueva dirección',
+  'Label Name': 'Nombre de la etiqueta',
+  'Select Exact Location': 'Seleccionar ubicación exacta',
+  'Auto-filled from Google Places API':
+      'Rellenado automáticamente desde la API de Google Places',
+  'Pick location': 'Elegir ubicación',
+  'Note': 'Nota',
+  'Enter Amount or Select Any': 'Ingrese el monto o seleccione uno',
+  'Proceed to Add Balance': 'Proceder a agregar saldo',
+  'Add Balance': 'Agregar saldo',
+  'Payment History': 'Historial de pagos',
+  'Add New Card': 'Agregar nueva tarjeta',
+  'CVC': 'CVC',
+  'Card Number': 'Número de tarjeta',
+  'Enter your card number': 'Ingresa tu número de tarjeta',
+  'MM/YY': 'MM/AA',
+  'Add Debit or Credit Card': 'Agregar tarjeta de débito o crédito',
+  'Expiry Date': 'Fecha de vencimiento',
+  'Debit Card': 'Tarjeta de débito',
+  'Enter email': 'Ingrese correo electrónico',
+  'Enter Password': 'Ingrese contraseña',
+  'Forgot Password?': '¿Olvidó su contraseña?',
+  'Forgot Password': '¿Olvidó su contraseña?',
+  'SIGN UP': 'REGISTRARSE',
+  'Sign Up': 'Registrarse',
+  'LOG IN': 'INICIAR SESIÓN',
+  'Login': 'Iniciar sesión',
+  'Create New Account': 'Crear nueva cuenta',
+  'Already have an account?': '¿Ya tienes una cuenta?',
+  'First time here?': '¿Primera vez aquí?',
+  'Send Code': 'Enviar código',
+  'Reset Password': 'Restablecer contraseña',
+  'Enter Verification Code': 'Ingrese el código de verificación',
+  'We have sent the code verification to your\nemail address':
+      'Hemos enviado el código de verificación a tu\ncorreo electrónico',
+  'Please enter your email address. So we':
+      'Por favor ingrese su correo electrónico. Así podremos',
+  'Upload Profile Picture': 'Subir foto de perfil',
+  'Or sign in with': 'O inicie sesión con',
+  'Google': 'Google',
+  'Facebook': 'Facebook',
+  'Apple': 'Apple',
+  'Jon Doe': 'Jon Doe',
+  'Verify': 'Verificar',
+  'Please enter your email address. So we\'ll\nsend you link to get into your account':
+      'Por favor ingresa tu dirección de correo.\nTe enviaremos un enlace para acceder a tu cuenta.',
+  'Rides': 'Viajes',
+  'Account': 'Cuenta',
+  'Ride Start location': 'Ubicación de inicio del viaje',
+  'Your Location': 'Tu ubicación',
+  'AnnAle Support': 'Soporte de AnnAle',
+  'Type a message...': 'Escribe un mensaje...',
+  'User': 'Usuario',
+  'Help & Support': 'Ayuda y Soporte',
+  'Can I bring my pet?': '¿Puedo llevar a mi mascota?',
+  'Yes. Cash is accepted for rides in some regions...':
+      'Sí. El efectivo es aceptado en algunas regiones...',
+  'I’m having issues with registration': 'Tengo problemas con el registro',
+  'Please ensure you entered a valid phone number and internet connectivity.':
+      'Asegúrate de ingresar un número válido y tener conexión a internet.',
+  'How do I select the payment method for the ride I want to take?':
+      '¿Cómo selecciono el método de pago para el viaje?',
+  'On the payment screen you can choose card, cash or wallet before confirming.':
+      'En la pantalla de pago puedes elegir tarjeta, efectivo o monedero antes de confirmar.',
+  'What should I do in case of emergency?':
+      '¿Qué debo hacer en caso de emergencia?',
+  'Tap the emergency button in app or dial local emergency services immediately.':
+      'Toca el botón de emergencia o llama a servicios locales inmediatamente.',
+  'How do I request a ride?': '¿Cómo solicito un viaje?',
+  'Open the home screen, set your destination, then tap Confirm Pickup.':
+      'Abre la pantalla principal, establece tu destino y toca Confirmar recogida.',
+  'Pets are allowed in AnnAle Pet‑Friendly rides. Choose that option while booking.':
+      'Las mascotas están permitidas en viajes amigables con mascotas. Elige esa opción al reservar.',
+  'I have a disability, can I use AnnAle?':
+      'Tengo una discapacidad, ¿puedo usar AnnAle?',
+  'Yes. We support accessible rides; contact support to arrange assistance.':
+      'Sí. Ofrecemos viajes accesibles; contacta al soporte para asistencia.',
+  'Contact': 'Contacto',
+  'Live Chat with AnnAle support': 'Chat en vivo con soporte de AnnAle',
+  'Call AnnAle support': 'Llamar al soporte de AnnAle',
+  'I forgot an item in the vehicle': 'Olvidé un artículo en el vehículo',
+  'Tap Help > Lost & Found inside the trip details to contact the driver.':
+      'Toca Ayuda > Objetos perdidos en los detalles del viaje para contactar al conductor.',
+  'Can I pay in cash?': '¿Puedo pagar en efectivo?',
+  'Frequently Asked Questions': 'Preguntas Frecuentes',
+  'What vehicles are allowed on AnnAle?':
+      '¿Qué vehículos están permitidos en AnnAle?',
+  'Two‑wheelers, three‑wheelers and small cars less than 5 years old.':
+      'Motocicletas, triciclos y autos pequeños con menos de 5 años de antigüedad.',
+  'Support': 'Soporte',
+  'Select from here...': 'Selecciona desde aquí...',
+  'Friend': 'Amigo(a)',
+
+  'Relationship': 'Relación',
+  'Enter here': 'Ingresa aquí',
+  'First Name': 'Nombre',
+
+  'Other relatives': 'Otros parientes',
+
+  'Child': 'Hijo(a)',
+  'Brother/Sister': 'Hermano/Hermana',
+  'Last Name': 'Apellido',
+  'Emergency Contact': 'Contacto de Emergencia',
+  'Email': 'Correo electrónico',
+  'Spouse': 'Esposo(a)',
+  'Add Emergency Contact Person': 'Agregar Contacto de Emergencia',
+  'Privacy & Security': 'Privacidad y seguridad',
+  'AnnAle is not working': 'AnnAle no funciona',
+  'Proceed to deactivate this account': 'Proceder a desactivar esta cuenta',
+  'Deactivate Account': 'Desactivar cuenta',
+  'To deactivate your account, confirm your country code and enter your phone number.':
+      'Para desactivar tu cuenta, confirma tu código de país e ingresa tu número de teléfono.',
+  'Choose A Country': 'Elige un país',
+  'AnnAle is missing a feature': 'A AnnAle le falta una función',
+  'We hate to see you leave! Tell us why you are deleting your account:':
+      '¡Odiamos verte partir! Dinos por qué estás eliminando tu cuenta:',
+  'Select a reason': 'Selecciona una razón',
+  'I am changing my phone number': 'Estoy cambiando mi número de teléfono',
+  'I am deactivating my account temporarily':
+      'Estoy desactivando mi cuenta temporalmente',
+  'I am changing my device': 'Estoy cambiando de dispositivo',
+  'Other': 'Otro',
+  'How can we improve? (optional)': '¿Cómo podemos mejorar? (opcional)',
+  'Next': 'Siguiente',
+  'Get Started': 'Comenzar',
+  'Welcome to Ann Ale': 'Bienvenido a Ann Ale',
+  'The Fastest Bike Ride at Your Fingertips':
+      'El viaje en moto más rápido al alcance de tu mano',
+  'Affordable. Safe. Convenient. Wherever You Go.':
+      'Económico. Seguro. Conveniente. Dondequiera que vayas.',
+  'Real-time tracking, secure payments & trusted riders.':
+      'Seguimiento en tiempo real, pagos seguros y conductores confiables.',
+  'Privacy Security': 'Privacidad y Seguridad',
+  'Data Security': 'Seguridad de Datos',
+  'Data Use': 'Uso de Datos',
+  'Data Sharing': 'Compartición de Datos',
+  'Data Collection': 'Recopilación de Datos',
+  'User Rights': 'Derechos del Usuario',
+  'We implement security measures to protect your data from unauthorized access, alteration, or disclosure. However, no method of transmission over the internet is completely secure.':
+      'Implementamos medidas de seguridad para proteger sus datos del acceso no autorizado, alteración o divulgación. Sin embargo, ningún método de transmisión por internet es completamente seguro.',
+  'Your data is used to provide and improve our services, personalize your experience, process payments, and communicate with you. We may also use data for research, analytics, and marketing purposes.':
+      'Sus datos se utilizan para proporcionar y mejorar nuestros servicios, personalizar su experiencia, procesar pagos y comunicarnos con usted. También podemos usar los datos para investigación, análisis y fines de marketing.',
+  'We may share your information with service providers, business partners, and legal authorities when required. We do not sell your personal data to third parties.':
+      'Podemos compartir su información con proveedores de servicios, socios comerciales y autoridades legales cuando sea necesario. No vendemos sus datos personales a terceros.',
+  'We collect information you provide directly, such as account details, trip requests, and payment information. We also gather data automatically, including location, device information, and app usage.':
+      'Recopilamos información que usted proporciona directamente, como detalles de la cuenta, solicitudes de viajes e información de pago. También recopilamos datos automáticamente, incluyendo ubicación, información del dispositivo y uso de la aplicación.',
+  'You have the right to access, correct, or delete your personal information. You can also object to or restrict certain data processing activities. Contact us for assistance.':
+      'Tiene derecho a acceder, corregir o eliminar su información personal. También puede oponerse o restringir ciertas actividades de procesamiento de datos. Contáctenos para obtener ayuda.',
+
+  'Service Agreement': 'Acuerdo de servicio',
+  'User Responsibilities': 'Responsabilidades del usuario',
+  'You must be 18+ to use our app. Provide accurate info, respect drivers, and follow local laws. Misuse may lead to account termination.':
+      'Debes tener 18 años o más para usar nuestra aplicación. Proporciona información precisa, respeta a los conductores y sigue las leyes locales. El uso indebido puede llevar a la cancelación de la cuenta.',
+  'Payment Terms': 'Condiciones de pago',
+  'Fares are calculated based on distance and time. Payment is due upon ride completion. We use secure payment methods.':
+      'Las tarifas se calculan en función de la distancia y el tiempo. El pago se realiza al finalizar el viaje. Usamos métodos de pago seguros.',
+  'Cancellation Policy': 'Política de cancelación',
+  'Cancellations may incur fees. Refer to our cancellation policy for details. Repeated cancellations may affect your account.':
+      'Las cancelaciones pueden generar cargos. Consulta nuestra política de cancelación para más detalles. Las cancelaciones repetidas pueden afectar tu cuenta.',
+  'Liability': 'Responsabilidad',
+  'We are not liable for damages arising from your use of the app. Our liability is limited to the fullest extent permitted by law.':
+      'No somos responsables por daños derivados del uso de la aplicación. Nuestra responsabilidad está limitada en la medida permitida por la ley.',
+  'Terms & Conditions': 'Términos y condiciones',
+  'By using our ride-sharing app, you agree to these terms. We provide a platform connecting riders with drivers. We are not a transportation provider.':
+      'Al usar nuestra aplicación de viajes compartidos, aceptas estos términos. Proporcionamos una plataforma que conecta pasajeros con conductores. No somos un proveedor de transporte.',
+  'Ride Updates': 'Actualizaciones de viaje',
+  'Get SMS updates about your rides and important account information.':
+      'Recibe actualizaciones por SMS sobre tus viajes e información importante de tu cuenta.',
+  'Promotions': 'Promociones',
+  'News': 'Noticias',
+  'Notification Settings': 'Configuración de notificaciones',
+  'Notification Categories': 'Categorías de notificaciones',
+  'Push Notifications': 'Notificaciones push',
+  'Enable SMS Notifications': 'Habilitar notificaciones por SMS',
+  'Enable Push Notifications': 'Habilitar notificaciones push',
+  'Enable Email Notifications':
+      'Habilitar notificaciones por correo electrónico',
+  'Email Notifications': 'Notificaciones por correo electrónico',
+  'SMS Notifications': 'Notificaciones por SMS',
+  'Receive email updates about your account, promotions, and news.':
+      'Recibe actualizaciones por correo sobre tu cuenta, promociones y noticias.',
+  'Get real-time updates about your rides, promotions, and more.':
+      'Recibe actualizaciones en tiempo real sobre tus viajes, promociones y más.',
+
+  'Gender': 'Género',
+  'Edit Profile': 'Editar perfil',
+  'Helmet Preference': 'Preferencia de casco',
+  'Ride Preference': 'Preferencia de viaje',
+  'Silent Driver': 'Conductor silencioso',
+
+  'Phone Number': 'Número de teléfono',
+  'Name': 'Nombre',
+
+  'DEBIT CARD': 'TARJETA DE DÉBITO',
+  'CARD NUMBER': 'NÚMERO DE TARJETA',
+
+  'EXPIRY DATE': 'FECHA DE VENCIMIENTO',
+  'CARD HOLDER NAME': 'NOMBRE DEL TITULAR',
+  'Referrals & Rewards': 'Referencias y Recompensas',
+  'Invite Friends': 'Invitar amigos',
+  'Refer a friend': 'Recomendar a un amigo',
+  'Invite friends, earn rewards': 'Invita a amigos, gana recompensas',
+  'Share your invite code with friends and family. When they complete their first trip, you':
+      'Comparte tu código de invitación con amigos y familiares. Cuando completen su primer viaje, tú',
+  'Your rewards': 'Tus recompensas',
+  'Earn 11.30 HTG': 'Gana 11.30 HTG',
+  'Earn 12.50 HTG': 'Gana 12.50 HTG',
+  'Complete 5 trips': 'Completa 5 viajes',
+  'Payment Method': 'Método de pago',
+  'Add Card': 'Agregar tarjeta',
+
+  'Security Code': 'Código de seguridad',
+
+  'Your new card has been added.': 'Su nueva tarjeta ha sido agregada.',
+  'Congratulations!': '¡Felicidades!',
+  'Select Address': 'Seleccionar dirección',
+  'Map': 'Mapa',
+  'Delete': 'Eliminar',
+  'Edit': 'Editar',
+  'Driver Name': 'Nombre del conductor',
+  'Keep Sharing for the driver': 'Sigue compartiendo para el conductor',
+  'Schedule for later': 'Programar para más tarde',
+  'Confirm': 'Confirmar',
+  'Use Coupon': 'Usar cupón',
+  'Current location': 'Ubicación actual',
+  'Search Destination': 'Buscar destino',
+  'Your Route': 'Tu ruta',
+  'Ride options': 'Opciones de viaje',
+  'Book for someone': 'Reservar para alguien',
+  'Live Location Sharing': 'Compartir ubicación en vivo',
+  'Looking For Nearby Drivers': 'Buscando conductores cercanos',
+  'Share to others': 'Compartir con otros',
+  'Share LOCCC': 'Compartir LOCCC',
+  'Ride Start location': 'Ubicación de inicio del viaje',
+  'SOS': 'SOS',
+  'Cancel ride': 'Cancelar viaje',
+  'Your ride': 'Tu viaje',
+  'at location': 'en la ubicación',
+  'Chat': 'Chat',
+  'min': 'min',
+  '10': '10',
+  'Royal Enfield': 'Royal Enfield',
+  'Antonio': 'Antonio',
+  'Rides completed': 'viajes completados',
+  'Share Location': 'Compartir ubicación',
+  "Don't Share to driver": "No compartir con el conductor",
+  "Rider Reached\nto you.": "El conductor ha llegado\na tu ubicación.",
+  "Share This OTP with Cab\nDriver and start the ride.":
+      "Comparte este OTP con el conductor\ny comienza el viaje.",
+  "Pay Before Ride": "Pagar antes del viaje",
+  "Pay After Ride": "Pagar después del viaje",
+  "We Reached to\nyour Destination": "Hemos llegado\na tu destino",
+  "Pay Now": "Pagar ahora",
+  "Submit": "Enviar",
+  "Reason to cancel": "Razón para cancelar",
+  "Rate Your Ride": "Califica tu viaje",
+  "Ratings & Reviews Submitted successfully":
+      "Calificaciones y reseñas enviadas con éxito",
+  "Don’t worry, we’ll let you know if there’s a problem with your account":
+      "No te preocupes, te informaremos si hay un problema con tu cuenta",
+  "Car Condition": "Condición del vehículo",
+  "Driver Behaviors": "Comportamiento del conductor",
+  "Write Overall Experience": "Escribe tu experiencia general",
+  "Search Date, Car name": "Buscar fecha, nombre del vehículo",
+  "Add Reviews": "Agregar reseñas",
+  "Track": "Rastrear",
+  "Write here...": "Escribe aquí...",
+  "Back to Rides": "Volver a los viajes",
+  "Repeat Ride": "Repetir viaje",
+  "Add Review": "Agregar reseña",
+
+  "Canceled": "Cancelado",
+  "Notifications": "Notificaciones",
+  'Congratulations!': '¡Felicidades!',
+  'You booked this ride successfully': 'Reservaste este viaje con éxito',
+  'Are You Sure Want\nTo Log Out ?':
+      '¿Estás seguro de que\nquieres cerrar sesión?',
+  'Yes': 'Sí',
+  'No': 'No',
+  'Choose A Date & Time': 'Elige una fecha y hora',
+  'drop-off time': 'hora de llegada',
+  'About 1 hrs trip': 'Aproximadamente 1 hora de viaje',
+  "Enter the Rider's Details": 'Ingresa los datos del pasajero',
+  "Add the Person's Details": 'Agrega los datos de la persona',
+  'Back to Log in': 'Volver a iniciar sesión',
+  'Back To Wallet': 'Volver a la billetera',
+
+  'Thank You': '¡Gracias',
+  'Your Password has changed': 'Tu contraseña ha sido cambiada',
+  'Remind me later': 'Recuérdame más tarde',
+  "We'll let you know if there's a problem with your account":
+      'Te informaremos si hay un problema con tu cuenta',
+  'An SOS message and your ride details have been sent to the appropriate contact.':
+      'Un mensaje SOS y los detalles de tu viaje se han enviado al contacto adecuado.',
+
+  'Live Location Sharing': 'Compartir ubicación en tiempo real',
+  'Sharing live location to driver has Stopped':
+      'Se ha detenido el uso compartido de la ubicación con el conductor',
+  'Successfully, your live location to driver':
+      'Ubicación en tiempo real compartida con éxito con el conductor',
+  'Done': 'Hecho',
+  'Welcome Back': 'Bienvenido de nuevo',
+  'Login or sign up to experience luxury at \nyour fingertips':
+      'Inicia sesión o regístrate para disfrutar del lujo al alcance de tu mano',
+
+  'Upload Picture': 'Subir foto',
+  'Tap to upload your profile photo': 'Toca para subir tu foto de perfil',
+  'Upload': 'Subir',
+};
