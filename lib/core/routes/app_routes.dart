@@ -1,6 +1,9 @@
+import 'package:annale_driver/modules/account/bindings/account_binding.dart';
+import 'package:annale_driver/modules/account/views/account_screen.dart';
 import 'package:annale_driver/modules/auth/bindings/auth_bindings.dart';
 import 'package:annale_driver/modules/auth/views/app_success_screen.dart';
 import 'package:annale_driver/modules/auth/views/login_screen.dart';
+import 'package:annale_driver/modules/auth/views/profile_type_screen.dart';
 import 'package:annale_driver/modules/auth/views/signup_screen.dart';
 import 'package:annale_driver/modules/auth/views/verification_screen.dart';
 import 'package:annale_driver/modules/dashboard/bindings/dashboard_binding.dart';
@@ -11,11 +14,14 @@ import 'package:get/get.dart';
 
 /// 🔗 Route Names
 class AppRoutes {
+  // auth related
   static const String splash = '/splash';
   static const String onboarding = '/onbording';
   static const String login = '/login';
   static const String register = '/register';
-  static const String otp = '/otp';
+
+  static const String profileType = '/profile-type';
+  static const String verifyOtp = '/verify-top';
 
   static const String dashboard = '/dashboard';
   static const String home = '/home';
@@ -23,11 +29,21 @@ class AppRoutes {
   static const String wallet = '/wallet';
   static const String account = '/account';
   static const String passwordChanged = '/password-changed';
+  // account
+  static const String AccountScreen = '/account-screen';
 }
 
 /// 🌐 GetX Pages Configuration
 class AppPages {
   static final routes = [
+    // account related pages
+    GetPage(
+      name: AppRoutes.AccountScreen,
+      page: () => AccountScreen(),
+      transition: Transition.fadeIn,
+      binding: AccountBinding(),
+    ),
+    // auth related pages
     GetPage(
       name: AppRoutes.splash,
       page: () => SplashScreen(),
@@ -39,12 +55,17 @@ class AppPages {
       binding: AuthBinding(),
     ),
     GetPage(
+      name: AppRoutes.login,
+      page: () => const VerificationScreen(),
+      binding: AuthBinding(),
+    ),
+    GetPage(
       name: AppRoutes.register,
       page: () => const SignupScreen(),
       binding: AuthBinding(),
     ),
     GetPage(
-      name: AppRoutes.otp,
+      name: AppRoutes.verifyOtp,
       page: () => const VerificationScreen(),
       binding: AuthBinding(),
     ),
@@ -54,9 +75,15 @@ class AppPages {
       binding: AuthBinding(),
     ),
     GetPage(
+      name: AppRoutes.profileType,
+      page: () => const ProfileTypeScreen(),
+      binding: AuthBinding(),
+    ),
+    GetPage(
       name: AppRoutes.dashboard,
       page: () => DashboardScreen(),
       binding: DashboardBinding(),
+      // bindings: [DashboardBinding(), AccountBinding()],
     ),
     GetPage(
       name: AppRoutes.onboarding,

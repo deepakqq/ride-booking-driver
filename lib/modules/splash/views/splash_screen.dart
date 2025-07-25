@@ -1,101 +1,79 @@
+import 'package:annale_driver/core/routes/app_routes.dart';
+import 'package:annale_driver/core/theme/app_colors.dart';
 import 'package:annale_driver/core/values/app_images.dart';
 import 'package:annale_driver/modules/onboarding/views/onboarding_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:lottie/lottie.dart';
 import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen>
-    with TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation<double> _firstContainerSize;
-  late Animation<double> _secondContainerSize;
-  late Animation<double> _firstContainerMoveToTop;
-  late Animation<double> _secondContainerSlideUp;
-  late Animation<double> _bounceAnimation;
-  bool showAnimation = true;
-
-  double screenHeight = 0;
-  double screenWidth = 0;
+  late Animation<double> _circleAnimation;
+  late Animation<double> _logoOpacityAnimation;
+  late Animation<Offset> _slideAnimation;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    screenHeight = MediaQuery.of(context).size.height;
-    screenWidth = MediaQuery.of(context).size.width;
+  void initState() {
+    super.initState();
 
-    _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 5))
-          ..addStatusListener((status) {
-            // Add this listener to detect when animation completes
-            if (status == AnimationStatus.completed) {
-              // Navigate to next screen after animation finishes
-              Future.delayed(Duration(milliseconds: 0), () {
-                Get.offAll(
-                  () => OnboardingScreen(),
-                  transition: Transition.fadeIn,
+    // Increased total duration to 2500ms for slower animation
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2500),
+    );
 
-                  duration: Duration(milliseconds: 500),
-                );
-              });
-            }
-          });
-
-    // First animation: Logo grows from 0 to 130
-    _firstContainerSize = Tween<double>(begin: 0, end: 130.h).animate(
+    // Circle growing animation - now takes 60% of total time
+    _circleAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: Interval(0.0, 0.25, curve: Curves.easeInOut),
+        curve: const Interval(0, 0.6, curve: Curves.easeInOut),
       ),
     );
 
-    // Second animation: Text slides up from bottom
-    _secondContainerSlideUp =
-        Tween<double>(
-          begin: screenHeight,
-          end: screenHeight / 2 + 60.h,
-        ).animate(
+    // Logo fade-in animation - starts at 50% and ends at 70%
+    _logoOpacityAnimation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.5, 0.7, curve: Curves.easeIn),
+      ),
+    );
+
+    // Slide up animation for both circle and logo - starts at 70%
+    _slideAnimation =
+        Tween<Offset>(begin: Offset.zero, end: const Offset(0, -1.5)).animate(
           CurvedAnimation(
             parent: _controller,
-            curve: Interval(0.25, 0.5, curve: Curves.easeInOut),
+            curve: const Interval(0.7, 1.0, curve: Curves.easeInOut),
           ),
         );
 
-    _secondContainerSize = Tween<double>(begin: 0, end: 150.h).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Interval(0.25, 0.5, curve: Curves.easeInOut),
-      ),
-    );
+    _controller.forward();
 
-    // Third animation: Logo moves to top
-    _firstContainerMoveToTop = Tween<double>(begin: 0, end: -screenHeight / 3)
-        .animate(
-          CurvedAnimation(
-            parent: _controller,
-            curve: Interval(0.5, 0.8, curve: Curves.easeInOutBack),
-          ),
-        );
+    // Navigate to next screen after animation completes
+    // _controller.addStatusListener((status) {
+    //   if (status == AnimationStatus.completed) {
+    //     Future.delayed(const Duration(milliseconds: 0), () {
+    //       Get.offNamed(AppRoutes.onboarding,);
+    //     });
+    //   }
+    // });
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        Future.delayed(const Duration(milliseconds: 0), () {
+          Get.off(
+            () => const OnboardingScreen(),
 
-    // Fixed bounce animation - using a simple elastic curve instead of TweenSequence
-    _bounceAnimation = Tween<double>(begin: 0, end: 20).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Interval(0.8, 1.0, curve: Curves.elasticOut),
-      ),
-    );
-
-    Future.delayed(Duration(milliseconds: 3100), () {
-      setState(() {
-        showAnimation = false;
-      });
-      if (mounted) {
-        _controller.forward();
+            transition: Transition.downToUp,
+            duration: const Duration(milliseconds: 100),
+          );
+        });
       }
     });
   }
@@ -108,48 +86,68 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+    // Reduced max circle size to make slide-up more visible
+    final maxCircleSize = screenSize.height * 2;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: AnimatedBuilder(
         animation: _controller,
         builder: (context, child) {
-          // Calculate bounce effect - dips down then returns up
-          final bounceValue = _bounceAnimation.value;
-          final bounceOffset = bounceValue > 10
-              ? 20 -
-                    bounceValue // Return up after dip
-              : bounceValue; // Initial dip down
-
-          final totalVerticalOffset =
-              _firstContainerMoveToTop.value + bounceOffset;
-
           return Stack(
-            clipBehavior: Clip.none,
             children: [
-              // Logo container
+              // Background circle that grows and covers the screen
               Positioned(
-                top: ((screenHeight / 2) - 80.h) + totalVerticalOffset,
-                left: screenWidth / 2 - _firstContainerSize.value / 2,
-                child: Container(
-                  width: _firstContainerSize.value,
-                  height: _firstContainerSize.value,
-                  child: Image.asset(AppImages.logo),
+                left:
+                    screenSize.width / 2 -
+                    (_circleAnimation.value * maxCircleSize) / 2,
+                top:
+                    screenSize.height / 2 -
+                    (_circleAnimation.value * maxCircleSize) / 2,
+                child: SlideTransition(
+                  position: _slideAnimation,
+                  child: Container(
+                    width: _circleAnimation.value * maxCircleSize,
+                    height: _circleAnimation.value * maxCircleSize,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.primaryDark,
+                    ),
+                  ),
                 ),
               ),
 
-              // Text container
-              Positioned(
-                top: _secondContainerSlideUp.value,
-                left: screenWidth / 2 - _secondContainerSize.value / 2,
-                child: Container(
-                  width: _secondContainerSize.value,
-                  child: Image.asset(AppImages.logoText),
+              // Slide up transition for logo
+              SlideTransition(
+                position: _slideAnimation,
+                child: Center(
+                  child: Opacity(
+                    opacity: _logoOpacityAnimation.value,
+                    child: Image.asset(
+                      AppImages.logo,
+                      color: Colors.white,
+                      height: 100,
+                    ),
+                  ),
                 ),
               ),
             ],
           );
         },
       ),
+    );
+  }
+}
+
+class NextScreen extends StatelessWidget {
+  const NextScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Home Screen')),
+      body: const Center(child: Text('Welcome to the app!')),
     );
   }
 }

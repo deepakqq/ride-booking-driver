@@ -7,7 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class VerificationScreen extends StatefulWidget {
-  const VerificationScreen({super.key});
+  final VoidCallback? onVerificationSuccess;
+  const VerificationScreen({super.key, this.onVerificationSuccess});
 
   @override
   State<VerificationScreen> createState() => _VerificationScreenState();
@@ -24,6 +25,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
             children: [
               SizedBox(height: 24.h),
               AuthHeader(
+                titleBig: false,
                 title: "Enter Verification Code".tr,
                 subTitle:
                     "We have sent the code verification to your\nemail address"
@@ -34,9 +36,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
               SizedBox(height: 40.h),
               AppButton(
                 text1: "Verify".tr,
-                callback: () {
-                  Get.to(() => AppSuccessScreen());
-                },
+                // callback: () {
+                //   Get.to(() => AppSuccessScreen());
+                // },
+                callback: widget.onVerificationSuccess,
               ),
               SizedBox(height: 24.h),
             ],

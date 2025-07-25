@@ -1,3 +1,4 @@
+import 'package:annale_driver/modules/account/views/account_screen.dart';
 import 'package:annale_driver/widgets/app_appbar.dart';
 import 'package:annale_driver/widgets/app_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,8 @@ class DashboardScreen extends StatelessWidget {
     // RidesScreen(),
     Container(child: Center(child: Text("ride"))),
     Container(child: Center(child: Text("wallet"))),
-
-    Container(child: Center(child: Text("account"))),
+    AccountScreen(),
+    // Container(child: Center(child: Text("account"))),
   ];
 
   @override

@@ -1,37 +1,5 @@
-// import 'package:annale_driver/core/values/app_images.dart';
-// import 'package:flutter/material.dart';
-
-// class AuthHeader extends StatelessWidget {
-//   final String title;
-//   final String subTitle;
-//   const AuthHeader({
-//     Key? key,
-//     this.title = "Welcome Back",
-//     this.subTitle =
-//         "Login or sign up to experience luxury at \nyour fingertips",
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     var size = MediaQuery.of(context).size;
-//     return Column(
-//       children: [
-//         Image.asset(AppImages.logo, width: size.width * .27),
-//         Text(
-//           title,
-//           style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-//         ),
-//         Text(
-//           subTitle,
-//           textAlign: TextAlign.center,
-//           style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
-//         ),
-//       ],
-//     );
-//   }
-// }
-
 import 'package:annale_driver/core/values/app_images.dart';
+import 'package:annale_driver/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -44,6 +12,7 @@ class AuthHeader extends StatelessWidget {
   final bool showTitle;
   final bool showLogo;
   final bool showBackBtn;
+  final bool titleBig;
   const AuthHeader({
     Key? key,
     this.title = "Welcome Back",
@@ -53,6 +22,7 @@ class AuthHeader extends StatelessWidget {
     this.showTitle = true,
     this.showLogo = true,
     this.showBackBtn = false,
+    this.titleBig = true,
   }) : super(key: key);
 
   @override
@@ -92,16 +62,20 @@ class AuthHeader extends StatelessWidget {
             : SizedBox(height: 65.h),
         if (showTitle) SizedBox(height: 12.h),
         if (showTitle)
-          Text(
-            title.tr,
-            style: TextStyle(fontSize: 28.sp, fontWeight: FontWeight.bold),
+          AppText(
+            text: title.tr,
+            fontSize: titleBig ? 26.sp : 20.sp,
+            fontWeight: FontWeight.bold,
+            letterSpacing: -1,
           ),
         if (showSubtitle) SizedBox(height: 6.h),
         if (showSubtitle)
-          Text(
-            subTitle.tr,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600),
+          AppText(
+            text: subTitle.tr,
+            align: TextAlign.center,
+            fontSize: 13.sp,
+            fontWeight: FontWeight.w400,
+            letterSpacing: -.7,
           ),
       ],
     );

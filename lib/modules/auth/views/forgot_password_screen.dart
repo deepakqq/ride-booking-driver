@@ -27,6 +27,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             children: [
               SizedBox(height: 24.h),
               AuthHeader(
+                showBackBtn: true,
                 title: "Forgot Password".tr,
                 subTitle:
                     "Please enter your email address. So we'll\nsend you link to get into your account"

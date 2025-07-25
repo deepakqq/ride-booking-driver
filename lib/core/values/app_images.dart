@@ -15,6 +15,9 @@ class AppImages {
 
   // Profile
   static const userAvatar = '$_base/user_avatar.png';
+  static const iconMyRide = '$_icons/icon-my-ride.png';
+  static const iconBankAccount = '$_icons/icon-bank-account.png';
+  static const iconRatinOverview = '$_icons/icon-rating-over.png';
 
   // images
   static const rightTick = '$_base/right-tick.png';
@@ -28,6 +31,8 @@ class AppImages {
   static const iconSGoogle = '$_icons/icon_s_google.png';
   static const iconSFacebook = '$_icons/icon_s_facebook.png';
   static const iconPerson = '$_icons/icon_person.png';
+  static const pType1 = '$_base/p-type1.png';
+  static const pType2 = '$_base/p-type2.png';
 
   // payment section
   static const master = '$_base/master.png';

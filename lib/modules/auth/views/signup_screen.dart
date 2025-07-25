@@ -76,7 +76,12 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
 
                     SizedBox(height: 16.h),
-                    AppButton(text1: "Sign Up".tr),
+                    AppButton(
+                      text1: "Sign Up".tr,
+                      callback: () {
+                        Get.toNamed(AppRoutes.verifyOtp);
+                      },
+                    ),
                     SizedBox(height: 16.h),
                   ],
                 ),

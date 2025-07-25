@@ -1,4 +1,5 @@
 import 'package:annale_driver/core/values/app_redius.dart';
+import 'package:annale_driver/widgets/app_text.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,18 +24,17 @@ class AppImageUploadBox extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              "Upload Picture".tr,
-              style: TextStyle(
-                fontSize: 12.sp,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
+            AppText(
+              text: "Upload Picture".tr,
+              fontSize: 12.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
             ),
             SizedBox(height: 4.h),
-            Text(
-              "Tap to upload your profile photo".tr,
-              style: TextStyle(fontSize: 10.sp, color: Colors.black54),
+            AppText(
+              text: "Tap to upload your profile photo".tr,
+              fontSize: 10.sp,
+              color: Colors.black54,
             ),
             SizedBox(height: 8.h),
             InkWell(
@@ -45,13 +45,11 @@ class AppImageUploadBox extends StatelessWidget {
                   color: Color(0xFFC4FAD1),
                   borderRadius: AppRadius.small,
                 ),
-                child: Text(
-                  "Upload".tr,
-                  style: TextStyle(
-                    fontSize: 10.sp,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600,
-                  ),
+                child: AppText(
+                  text: "Upload".tr,
+                  fontSize: 10.sp,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),

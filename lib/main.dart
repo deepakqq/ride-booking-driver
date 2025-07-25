@@ -1,3 +1,4 @@
+import 'package:annale_driver/core/bindings/app_bindings.dart';
 import 'package:annale_driver/core/controllers/theme_controller.dart';
 import 'package:annale_driver/core/routes/app_routes.dart';
 import 'package:annale_driver/core/translations/language_controller.dart';
@@ -8,6 +9,7 @@ import 'package:get/get.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  AppBinding().dependencies();
   final languageController = Get.put(LanguageController());
   languageController.setLocale('en', 'US');
   runApp(MyApp(languageController: languageController));
@@ -36,10 +38,11 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: Colors.white,
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           ),
+          // initialBinding: AppB,
           themeMode: ThemeController.to.themeMode,
           // home: SplashScreen(),
           // home: SplashScreen(),
-          initialRoute: AppRoutes.onboarding,
+          initialRoute: AppRoutes.splash,
           getPages: AppPages.routes,
         );
       },
