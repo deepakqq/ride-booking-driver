@@ -1,4 +1,5 @@
 import 'package:annale_driver/core/values/app_redius.dart';
+import 'package:annale_driver/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:annale_driver/widgets/app_text.dart';
@@ -31,11 +32,12 @@ class VehicleInfoCard extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: AppRadius.r8,
+        borderRadius: AppRadius.r12,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withOpacity(0.1),
             blurRadius: 6,
+            spreadRadius: 4,
             offset: const Offset(0, 2),
           ),
         ],
@@ -50,27 +52,31 @@ class VehicleInfoCard extends StatelessWidget {
                 'assets/images/vehicle-image.png',
                 width: Get.width * .3,
               ),
-
+              AppSpacing.width32,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppText(
                     text: "Ola Electric",
-                    fontSize: AppFonts.size18,
+                    fontSize: AppFonts.size14,
                     fontWeight: FontWeight.bold,
                   ),
                   Row(
                     children: [
-                      Icon(Icons.star, color: Colors.amber, size: 16.sp),
+                      AppText(
+                        text: "$rating",
+                        fontSize: AppFonts.size12,
+                        color: Colors.grey,
+                      ),
                       AppSpacing.width4,
-                      AppText(text: "$rating ★", fontSize: AppFonts.size14),
+                      Icon(Icons.star, color: Colors.amber, size: 18.sp),
                     ],
                   ),
                   AppSpacing.height4,
                   AppText(
                     text: ownerName,
                     fontSize: AppFonts.size12,
-                    color: Colors.grey[600],
+                    color: Colors.grey,
                   ),
                 ],
               ),
@@ -82,15 +88,28 @@ class VehicleInfoCard extends StatelessWidget {
           // Vehicle info row
           Row(
             children: [
-              Icon(Icons.electric_car, size: 18.sp, color: Colors.green),
-              AppSpacing.width8,
-              AppText(text: vehicleType, fontSize: AppFonts.size14),
-              AppSpacing.width16,
-              Icon(Icons.person_outline, size: 18.sp),
-              AppSpacing.width8,
-              AppText(
-                text: "$passengerCapacity Passenger",
-                fontSize: AppFonts.size14,
+              Expanded(
+                child: Container(
+                  alignment: Alignment.center,
+                  child: AppText(
+                    text: vehicleType,
+                    fontSize: AppFonts.size12,
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
+              // AppSpacing.width16,
+              Container(height: 15.h, width: 1, color: Colors.grey),
+
+              Expanded(
+                child: Container(
+                  alignment: Alignment.center,
+                  child: AppText(
+                    text: "$passengerCapacity Passenger",
+                    fontSize: AppFonts.size12,
+                    color: Colors.grey,
+                  ),
+                ),
               ),
             ],
           ),
@@ -98,29 +117,7 @@ class VehicleInfoCard extends StatelessWidget {
           AppSpacing.height12,
 
           // See Details button
-          GestureDetector(
-            onTap: onSeeDetails,
-            child: Container(
-              padding: EdgeInsets.symmetric(vertical: 4.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AppText(
-                    text: "See Details",
-                    fontSize: AppFonts.size14,
-                    color: Colors.blue,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  AppSpacing.width4,
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 14.sp,
-                    color: Colors.blue,
-                  ),
-                ],
-              ),
-            ),
-          ),
+          AppButton(height: 45.h, fontSize: 14.sp, text1: "See Details"),
         ],
       ),
     );

@@ -8,7 +8,12 @@ import 'package:annale_driver/modules/account/widgets/profile_info_tile.dart';
 import 'package:annale_driver/modules/auth/views/change_password_screen.dart';
 import 'package:annale_driver/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:annale_driver/modules/delete_account/screens/deactive_page1.dart';
+import 'package:annale_driver/modules/language/views/language_selection_screen.dart';
 import 'package:annale_driver/modules/my%20rides/screens/my_vehicle_screen.dart';
+import 'package:annale_driver/modules/notification_setting/views/notification_setting_screen.dart';
+import 'package:annale_driver/modules/referral/views/referral_reward_screen.dart';
+import 'package:annale_driver/modules/terms_condition/views/privacy_security_screen.dart';
+import 'package:annale_driver/modules/terms_condition/views/tnc_screen.dart';
 
 import 'package:annale_driver/widgets/popups/logout_confirmation.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +92,7 @@ class AccountScreen extends StatelessWidget {
           ),
           AccountOptionTile(
             onTap: () {
-              // Get.to(() => LanguageSelectionScreen());
+              Get.to(() => LanguageSelectionScreen());
             },
             title: "Language".tr,
             leadingIconPath: AppImages.iconLanguage,
@@ -108,7 +113,7 @@ class AccountScreen extends StatelessWidget {
           ),
           AccountOptionTile(
             onTap: () {
-              // Get.to(() => ReferralsRewardsScreen());
+              Get.to(() => ReferralsRewardsScreen());
             },
             title: "Referral and Loyalty".tr,
             leadingIconPath: AppImages.iconRefer,
@@ -132,21 +137,21 @@ class AccountScreen extends StatelessWidget {
 
           AccountOptionTile(
             onTap: () {
-              // Get.to(() => NotificationSettingsScreen());
+              Get.to(() => NotificationSettingsScreen());
             },
             title: "Notification Settings".tr,
             leadingIconPath: AppImages.iconSettingNotification,
           ),
           AccountOptionTile(
             onTap: () {
-              // Get.to(() => PrivacySecurityScreen());
+              Get.to(() => PrivacySecurityScreen());
             },
             title: "Privacy Security",
             leadingIconPath: AppImages.iconPrivacy,
           ),
           AccountOptionTile(
             onTap: () {
-              // Get.to(() => TncScreen());
+              Get.to(() => TncScreen());
             },
             title: "Terms & Conditions".tr,
             leadingIconPath: AppImages.iconTNC,

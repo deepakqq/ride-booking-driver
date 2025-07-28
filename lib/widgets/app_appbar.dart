@@ -1,4 +1,5 @@
 import 'package:annale_driver/core/values/app_spacing.dart';
+import 'package:annale_driver/modules/notification_setting/views/notification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/utils.dart';
@@ -65,7 +66,7 @@ class AppAppbar extends StatelessWidget implements PreferredSizeWidget {
             // Notification Icon
             GestureDetector(
               onTap: () {
-                // Get.to(() => NotificationScreen());
+                Get.to(() => NotificationScreen());
               },
               child: Container(
                 height: 50,
