@@ -51,7 +51,7 @@ class AppButton extends StatelessWidget {
           color: backgroundGradient == null ? backgroundColor : null,
           gradient: backgroundGradient,
           border: Border.all(
-            width: 1.w,
+            width: .6,
             color: whitebutton
                 ? Colors.white
                 : showBorder

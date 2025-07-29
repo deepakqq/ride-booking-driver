@@ -10,6 +10,8 @@ import 'package:annale_driver/modules/dashboard/bindings/dashboard_binding.dart'
 import 'package:annale_driver/modules/dashboard/views/dashboard_screen.dart';
 import 'package:annale_driver/modules/onboarding/views/onboarding_screen.dart';
 import 'package:annale_driver/modules/splash/views/splash_screen.dart';
+import 'package:annale_driver/modules/wallet/bindings/wallet_binding.dart';
+import 'package:annale_driver/modules/wallet/views/wallets_screen.dart';
 import 'package:get/get.dart';
 
 /// 🔗 Route Names
@@ -94,7 +96,11 @@ class AppPages {
     // Optional direct access
     // GetPage(name: AppRoutes.home, page: () => HomeScreen()),
     // GetPage(name: AppRoutes.rides, page: () => const RidesScreen()),
-    // GetPage(name: AppRoutes.wallet, page: () => const WalletsScreen()),
+    GetPage(
+      name: AppRoutes.wallet,
+      page: () => const WalletsScreen(),
+      binding: WalletBinding(),
+    ),
     // GetPage(
     //   name: AppRoutes.account,
     //   page: () => AccountScreen(),

@@ -4,10 +4,12 @@ import 'package:annale_driver/modules/account/controllers/account_controller.dar
 import 'package:annale_driver/modules/account/views/edit_screen.dart';
 import 'package:annale_driver/modules/account/widgets/account_option_tile.dart';
 import 'package:annale_driver/modules/account/widgets/profile_info_tile.dart';
+import 'package:annale_driver/modules/address/views/my_address_screen.dart';
 
 import 'package:annale_driver/modules/auth/views/change_password_screen.dart';
 import 'package:annale_driver/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:annale_driver/modules/delete_account/screens/deactive_page1.dart';
+import 'package:annale_driver/modules/help_and_contact/views/help_emergency_screen.dart';
 import 'package:annale_driver/modules/language/views/language_selection_screen.dart';
 import 'package:annale_driver/modules/my%20rides/screens/my_vehicle_screen.dart';
 import 'package:annale_driver/modules/notification_setting/views/notification_setting_screen.dart';
@@ -72,7 +74,7 @@ class AccountScreen extends StatelessWidget {
             title: "My Address".tr,
             leadingIconPath: AppImages.iconAddress,
             onTap: () {
-              // Get.to(() => MyAddressScreen());
+              Get.to(() => MyAddressScreen());
               // dashboardController.currentIndex.value = 2;
             },
           ),
@@ -121,7 +123,7 @@ class AccountScreen extends StatelessWidget {
           // NotificationSettingsScreen
           AccountOptionTile(
             onTap: () {
-              // Get.to(() => HelpEmergencyScreen());
+              Get.to(() => HelpEmergencyScreen());
             },
             title: "Help & Emergency Contact".tr,
             leadingIconPath: AppImages.iconHelpEmergency,
