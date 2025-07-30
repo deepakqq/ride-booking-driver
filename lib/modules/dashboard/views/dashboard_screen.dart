@@ -1,7 +1,7 @@
 import 'package:annale_driver/modules/account/views/account_screen.dart';
-import 'package:annale_driver/modules/home/views/home_screen.dart';
 import 'package:annale_driver/modules/wallet/controllers/wallet_controller.dart';
 import 'package:annale_driver/modules/wallet/views/wallets_screen.dart';
+import 'package:annale_driver/modules/home/views/home_screen.dart';
 import 'package:annale_driver/widgets/app_appbar.dart';
 import 'package:annale_driver/widgets/app_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +28,7 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
+        extendBody: true,
         appBar: AppAppbar(),
         body: pages[controller.currentIndex.value],
         bottomNavigationBar: AppBottomNavigationBar(),

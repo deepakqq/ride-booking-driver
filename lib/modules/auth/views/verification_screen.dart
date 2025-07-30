@@ -25,6 +25,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
             children: [
               SizedBox(height: 24.h),
               AuthHeader(
+                showBackBtn: true,
                 titleBig: false,
                 title: "Enter Verification Code".tr,
                 subTitle:
@@ -36,10 +37,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
               SizedBox(height: 40.h),
               AppButton(
                 text1: "Verify".tr,
-                // callback: () {
-                //   Get.to(() => AppSuccessScreen());
-                // },
-                callback: widget.onVerificationSuccess,
+                callback: () {
+                  Get.to(() => AppSuccessScreen());
+                },
+                // callback: widget.onVerificationSuccess,
               ),
               SizedBox(height: 24.h),
             ],

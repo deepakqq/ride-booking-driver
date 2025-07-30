@@ -10,6 +10,8 @@ class AppRadius {
   static BorderRadius get r16 => BorderRadius.circular(16.r);
   static BorderRadius get r18 => BorderRadius.circular(18.r);
   static BorderRadius get r20 => BorderRadius.circular(20.r);
+  static BorderRadius get r30 => BorderRadius.circular(30.r);
+  static BorderRadius get r50 => BorderRadius.circular(50.r);
   static BorderRadius get medium => BorderRadius.circular(12.r);
   static BorderRadius get large => BorderRadius.circular(20.r);
   static BorderRadius get extraLarge => BorderRadius.circular(32.r);

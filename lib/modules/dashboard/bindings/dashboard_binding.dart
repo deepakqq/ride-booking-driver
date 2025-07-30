@@ -1,5 +1,6 @@
 import 'package:annale_driver/modules/account/bindings/account_binding.dart';
 import 'package:annale_driver/modules/dashboard/controllers/dashboard_controller.dart';
+import 'package:annale_driver/modules/home/controllers/ride_controller.dart';
 import 'package:get/get.dart';
 
 class DashboardBinding extends Bindings {
@@ -7,5 +8,6 @@ class DashboardBinding extends Bindings {
   void dependencies() {
     Get.lazyPut(() => DashboardController());
     AccountBinding().dependencies();
+    Get.lazyPut<RideController>(() => RideController());
   }
 }

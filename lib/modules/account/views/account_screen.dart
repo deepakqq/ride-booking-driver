@@ -5,9 +5,8 @@ import 'package:annale_driver/modules/account/views/edit_screen.dart';
 import 'package:annale_driver/modules/account/widgets/account_option_tile.dart';
 import 'package:annale_driver/modules/account/widgets/profile_info_tile.dart';
 import 'package:annale_driver/modules/address/views/my_address_screen.dart';
-
 import 'package:annale_driver/modules/auth/views/change_password_screen.dart';
-import 'package:annale_driver/modules/dashboard/controllers/dashboard_controller.dart';
+
 import 'package:annale_driver/modules/delete_account/screens/deactive_page1.dart';
 import 'package:annale_driver/modules/help_and_contact/views/help_emergency_screen.dart';
 import 'package:annale_driver/modules/language/views/language_selection_screen.dart';
@@ -87,7 +86,7 @@ class AccountScreen extends StatelessWidget {
           ),
           AccountOptionTile(
             onTap: () {
-              // Get.to(() => ChangePasswordScreen());
+              Get.to(() => ChangePasswordScreen());
             },
             title: "Change Password".tr,
             leadingIconPath: AppImages.iconChagnePassword,

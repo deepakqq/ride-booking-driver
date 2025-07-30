@@ -124,18 +124,6 @@ class ModeSwitcher extends StatelessWidget {
               child: Container(
                 height: 35,
                 width: 35,
-                // decoration: const BoxDecoration(
-                //   color: Colors.white,
-                //   shape: BoxShape.circle,
-                //   boxShadow: [
-                //     BoxShadow(
-                //       color: Colors.black26,
-                //       blurRadius: 4,
-                //       offset: Offset(2, 2),
-                //     ),
-                //   ],
-                // ),
-                // padding: const EdgeInsets.all(6),
                 child: AnimatedSwitcher(
                   duration: const Duration(milliseconds: 300),
                   transitionBuilder: (child, animation) =>

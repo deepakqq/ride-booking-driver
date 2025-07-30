@@ -42,4 +42,9 @@ class AppGradients {
     begin: Alignment.topLeft, // top-left से थोड़ा अंदर
     end: Alignment.bottomRight, // bottom-right से थोड़ा कम
   );
+  static const LinearGradient red = LinearGradient(
+    colors: [Color(0xffFF0000), Color(0xff3F1003)],
+    begin: Alignment.topLeft, // top-left से थोड़ा अंदर
+    end: Alignment.bottomRight, // bottom-right से थोड़ा कम
+  );
 }

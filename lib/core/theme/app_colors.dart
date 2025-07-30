@@ -18,6 +18,7 @@ class AppColors {
   // Text Colors
   static const textDark = Colors.black;
   static const textLight = Colors.white;
+  static Color textGrey = Colors.black.withValues(alpha: .5);
 
   // Error
   static const error = Colors.redAccent;
@@ -28,4 +29,5 @@ class AppColors {
   // Success
   static const success = Color(0xFF00C851);
   static const screenBG = Color(0xFFEBEBEB);
+  static const divider = Color(0xFF7990B780);
 }

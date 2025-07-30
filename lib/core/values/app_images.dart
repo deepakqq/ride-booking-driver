@@ -104,6 +104,13 @@ class AppImages {
   static const iconClose = '$_icons/icon-close.png';
   static const iconSos = '$_icons/icon-sos.png';
   static const iconTimer = '$_icons/icon-timer.png';
+  static const iconOnline = '$_icons/icon-online.png';
+  static const iconOffline = '$_icons/icon-offline.png';
+  static const iconClock = '$_icons/icon-clock.png';
+  static const iconRoute = '$_icons/icon-route.png';
+  static const iconPhone = '$_icons/icon-phone.png';
+  static const iconGoUp = '$_icons/icon-go-up.png';
+  static const iconGoLeft = '$_icons/icon-go-left.png';
   static const pBike = '$_base/p-bike.png';
 
   // referral reward
