@@ -117,7 +117,12 @@ class VehicleInfoCard extends StatelessWidget {
           AppSpacing.height12,
 
           // See Details button
-          AppButton(height: 45.h, fontSize: 14.sp, text1: "See Details"),
+          AppButton(
+            callback: onSeeDetails,
+            height: 45.h,
+            fontSize: 14.sp,
+            text1: "See Details",
+          ),
         ],
       ),
     );

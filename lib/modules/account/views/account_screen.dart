@@ -10,8 +10,9 @@ import 'package:annale_driver/modules/auth/views/change_password_screen.dart';
 import 'package:annale_driver/modules/delete_account/screens/deactive_page1.dart';
 import 'package:annale_driver/modules/help_and_contact/views/help_emergency_screen.dart';
 import 'package:annale_driver/modules/language/views/language_selection_screen.dart';
-import 'package:annale_driver/modules/my%20rides/screens/my_vehicle_screen.dart';
+import 'package:annale_driver/modules/my_vehicle/screens/my_vehicle_screen.dart';
 import 'package:annale_driver/modules/notification_setting/views/notification_setting_screen.dart';
+import 'package:annale_driver/modules/payment/views/payment_screen.dart';
 import 'package:annale_driver/modules/referral/views/referral_reward_screen.dart';
 import 'package:annale_driver/modules/terms_condition/views/privacy_security_screen.dart';
 import 'package:annale_driver/modules/terms_condition/views/tnc_screen.dart';
@@ -59,31 +60,32 @@ class AccountScreen extends StatelessWidget {
               // Get.to(() => MyAddressScreen());
               // dashboardController.currentIndex.value = 2;
             },
-            title: "My Rides".tr,
+            title: "My Vehicle".tr,
             leadingIconPath: AppImages.iconMyRide,
           ),
           AccountOptionTile(
             onTap: () {
               // dashboardController.currentIndex.value = 2;
+              Get.to(() => PaymentScreen());
             },
             title: "Bank Accounts".tr,
             leadingIconPath: AppImages.iconBankAccount,
           ),
           AccountOptionTile(
-            title: "My Address".tr,
+            title: "My Addresss".tr,
             leadingIconPath: AppImages.iconAddress,
             onTap: () {
               Get.to(() => MyAddressScreen());
               // dashboardController.currentIndex.value = 2;
             },
           ),
-          AccountOptionTile(
-            title: "Payment Methods".tr,
-            leadingIconPath: AppImages.iconPayment,
-            onTap: () {
-              // Get.to(() => PaymentScreen());
-            },
-          ),
+          // AccountOptionTile(
+          //   title: "Payment Methods".tr,
+          //   leadingIconPath: AppImages.iconPayment,
+          //   onTap: () {
+          //     Get.to(() => PaymentScreen());
+          //   },
+          // ),
           AccountOptionTile(
             onTap: () {
               Get.to(() => ChangePasswordScreen());

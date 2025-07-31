@@ -46,7 +46,7 @@ Future<void> showSuccessDialog({
             /// ✅ Title
             AppText(
               text: title.tr,
-              fontSize: 20.sp,
+              fontSize: 16.sp,
               fontWeight: FontWeight.bold,
               align: TextAlign.center,
             ),
@@ -65,7 +65,16 @@ Future<void> showSuccessDialog({
             SizedBox(height: 24.h),
 
             /// ✅ Action Button
-            AppButton(text1: buttonText.tr, callback: onButtonPressed),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 32.w),
+              child: AppButton(
+                text1: buttonText.tr,
+                radius: 8.r,
+                callback: onButtonPressed,
+                fontSize: 14.sp,
+                height: 45.h,
+              ),
+            ),
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:annale_driver/modules/account/views/account_screen.dart';
+import 'package:annale_driver/modules/rides/views/rides_screen.dart';
 import 'package:annale_driver/modules/wallet/controllers/wallet_controller.dart';
 import 'package:annale_driver/modules/wallet/views/wallets_screen.dart';
 import 'package:annale_driver/modules/home/views/home_screen.dart';
@@ -13,15 +14,11 @@ class DashboardScreen extends StatelessWidget {
   final walletController = Get.put(WalletController());
 
   final List<Widget> pages = [
-    // Container(child: Center(child: Text("home"))),
     HomeScreen(),
-
-    // RidesScreen(),
-    Container(child: Center(child: Text("ride"))),
-    // Container(child: Center(child: Text("wallet"))),
+    RidesScreen(),
+    // Container(child: Center(child: Text("ride"))),
     WalletsScreen(),
     AccountScreen(),
-    // Container(child: Center(child: Text("account"))),
   ];
 
   @override

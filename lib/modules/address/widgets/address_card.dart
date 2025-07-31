@@ -1,3 +1,4 @@
+import 'package:annale_driver/core/theme/app_colors.dart';
 import 'package:annale_driver/core/theme/app_gradient.dart';
 import 'package:annale_driver/core/values/app_spacing.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class AddressCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
       decoration: BoxDecoration(
-        color: const Color(0xFF24422C),
+        color: AppColors.greenDarkBg1,
         border: Border.all(color: const Color(0xFF37598D)),
         borderRadius: BorderRadius.circular(14.r),
       ),

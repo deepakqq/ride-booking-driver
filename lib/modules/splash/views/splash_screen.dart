@@ -56,14 +56,6 @@ class _SplashScreenState extends State<SplashScreen>
 
     _controller.forward();
 
-    // Navigate to next screen after animation completes
-    // _controller.addStatusListener((status) {
-    //   if (status == AnimationStatus.completed) {
-    //     Future.delayed(const Duration(milliseconds: 0), () {
-    //       Get.offNamed(AppRoutes.onboarding,);
-    //     });
-    //   }
-    // });
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         Future.delayed(const Duration(milliseconds: 0), () {

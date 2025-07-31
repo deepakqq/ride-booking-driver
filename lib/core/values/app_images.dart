@@ -121,4 +121,8 @@ class AppImages {
 
   // delete account
   static const imageDeleteAccount = '$_base/delete-account.png';
+  // payment
+  static const uBank = '$_base/u-bank.png';
+  static const aBank = '$_base/a-bank.png';
+  static const iconEditC = '$_icons/icon-edit-c.png';
 }

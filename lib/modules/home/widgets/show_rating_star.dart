@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ShowRatingStar extends StatelessWidget {
+  final bool showSmall;
   final String rating;
-  const ShowRatingStar({Key? key, required this.rating}) : super(key: key);
+  const ShowRatingStar({Key? key, this.showSmall = false, required this.rating})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +32,15 @@ class ShowRatingStar extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.star_rounded, color: Colors.orange, size: AppFonts.size18),
+          Icon(
+            Icons.star_rounded,
+            color: Colors.orange,
+            size: showSmall ? AppFonts.size12 : AppFonts.size18,
+          ),
           AppSpacing.width4,
           AppText(
             text: rating,
-            fontSize: AppFonts.size14,
+            fontSize: showSmall ? AppFonts.size12 : AppFonts.size14,
             fontWeight: FontWeight.bold,
             color: Colors.black87,
           ),

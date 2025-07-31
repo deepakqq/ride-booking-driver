@@ -21,7 +21,7 @@ class AppSuccessScreen extends StatefulWidget {
   final showRemindMe;
   const AppSuccessScreen({
     super.key,
-    this.btnText = "Back to Log in",
+    this.btnText = "Done",
     this.showMessage = true,
     this.showRemindMe = false,
     this.bgColorGreen = false,
@@ -51,12 +51,12 @@ class _AppSuccessScreenState extends State<AppSuccessScreen> {
               Image.asset(AppImages.rightTick),
               if (widget.showMessage)
                 Image.asset(AppImages.great, height: 40.h),
-              if (widget.btnText == "Back to Rides")
+              if (widget.btnText == "Done")
                 AppText(
                   text: "${"Thank You".tr} 🎉",
                   fontSize: 30.h,
                   fontWeight: FontWeight.w800,
-                  color: AppColors.primary,
+                  color: AppColors.primaryDark,
                 ),
               AppSpacing.height16,
               AppText(
@@ -86,7 +86,7 @@ class _AppSuccessScreenState extends State<AppSuccessScreen> {
                     Get.back();
                     Get.back();
                   }
-                  if (widget.btnText == "Back to Rides") {
+                  if (widget.btnText == "Done") {
                     Get.back();
                     Get.back();
                   }

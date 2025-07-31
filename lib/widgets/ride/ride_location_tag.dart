@@ -31,12 +31,16 @@ class RideLocationTag extends StatelessWidget {
             child: CircleAvatar(radius: 5.r, backgroundColor: color),
           ),
           AppSpacing.width4,
-          Text(
-            text,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              color: AppColors.textDark,
-              fontWeight: FontWeight.bold,
+          Expanded(
+            child: Text(
+              text,
+              overflow: TextOverflow.ellipsis,
+
+              style: TextStyle(
+                color: AppColors.textDark,
+                fontWeight: FontWeight.bold,
+                fontSize: 13.sp,
+              ),
             ),
           ),
         ],

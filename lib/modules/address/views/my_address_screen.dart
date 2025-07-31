@@ -18,15 +18,6 @@ class MyAddressScreen extends StatelessWidget {
       body: ListView(
         padding: AppSpacing.screenPadding,
         children: [
-          AppText(
-            text:
-                "✨ ${"Easily book your rides faster with saved locations like home, work, or frequent destinations.".tr}",
-            fontSize: 14.sp,
-            align: TextAlign.center,
-          ),
-          AppSpacing.height16,
-          AddAddressBox(),
-          AppSpacing.height16,
           AddressCard(
             title: '📍 ${"Home".tr}',
             address: '123, Near Green Valley, Delhi - 110001',
@@ -39,24 +30,17 @@ class MyAddressScreen extends StatelessWidget {
               // Handle delete
             },
           ),
-          SizedBox(height: 16.h),
-          AddressCard(
-            title: '🏢 ${"Work".tr}',
-            address: '456, IT Park Road, Gurgaon - 122001',
-            // iconPath: 'assets/images/icons/work_icon.png',
-            onEdit: () {
-              Get.to(() => AddEditAddress(edit: true));
-            },
+          AppSpacing.height16,
+          AddAddressBox(),
+          AppSpacing.height16,
+          AppText(
+            text:
+                "✨ ${"Easily book your rides faster with saved locations like home, work, or frequent destinations.".tr}",
+            fontSize: 14.sp,
+            align: TextAlign.center,
           ),
+
           SizedBox(height: 16.h),
-          AddressCard(
-            title: '✈️ ${"Airport".tr}',
-            address: 'Terminal 3, IGI Airport, Delhi',
-            // iconPath: 'assets/images/icons/airport_icon.png',
-            onEdit: () {
-              Get.to(() => AddEditAddress(edit: true));
-            },
-          ),
         ],
       ),
     );

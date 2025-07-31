@@ -2,6 +2,7 @@ import 'package:annale_driver/core/theme/app_colors.dart';
 import 'package:annale_driver/core/theme/app_gradient.dart';
 import 'package:annale_driver/core/values/app_redius.dart';
 import 'package:annale_driver/core/values/app_spacing.dart';
+import 'package:annale_driver/modules/home/widgets/show_rating_star.dart';
 import 'package:annale_driver/modules/rides/views/review_screen.dart';
 import 'package:annale_driver/widgets/app_button.dart';
 import 'package:annale_driver/widgets/app_text.dart';
@@ -23,6 +24,7 @@ class RideCard extends StatelessWidget {
   final Widget statusButton;
   final bool track;
   final String status;
+  final showSmallForRating;
 
   const RideCard({
     super.key,
@@ -36,6 +38,7 @@ class RideCard extends StatelessWidget {
     required this.statusButton,
     this.status = '',
     this.track = false,
+    this.showSmallForRating = true,
   });
 
   @override
@@ -108,8 +111,8 @@ class RideCard extends StatelessWidget {
               AppSpacing.height12,
               status == 'going'
                   ? RideActionBar(
-                      price: "240.0",
-                      buttonText: 'Track'.tr,
+                      price: "240.0 HTG",
+                      buttonText: 'Accept',
                       onPressed: () {},
                     )
                   : status == "canceled"
@@ -135,47 +138,36 @@ class RideCard extends StatelessWidget {
                   : Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () {
-                              if (status == "reviewed") {
-                                Get.to(() => ReviewScreen());
-                              }
-                            },
-                            child: Container(
-                              alignment: Alignment.center,
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 8.h,
-                                vertical: 4.h,
-                              ),
-                              decoration: BoxDecoration(
-                                color: status != "reviewed"
-                                    ? Color(0xff37598D)
-                                    : null,
-                                gradient: status == "reviewed"
-                                    ? AppGradients.yello
-                                    : null,
-                                borderRadius: AppRadius.r20,
-                              ),
-                              child: Text(
-                                status == "reviewed"
-                                    ? "Add Review".tr
-                                    : " ⭐️⭐️⭐️⭐️ 4 star",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14.sp,
-                                ),
+                        GestureDetector(
+                          onTap: () {
+                            if (status == "reviewed") {
+                              Get.to(() => ReviewScreen());
+                            }
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 8.h,
+                              vertical: 4.h,
+                            ),
+                            decoration: BoxDecoration(
+                              color: status != "reviewed"
+                                  ? Color(0xff37598D)
+                                  : null,
+                              gradient: status == "reviewed"
+                                  ? AppGradients.yello
+                                  : null,
+                              borderRadius: AppRadius.r20,
+                            ),
+                            child: Text(
+                              status == "reviewed"
+                                  ? "Add Review".tr
+                                  : " ⭐️⭐️⭐️⭐️ 4 star",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14.sp,
                               ),
                             ),
-                          ),
-                        ),
-                        AppSpacing.width32,
-                        Expanded(
-                          child: AppButton(
-                            height: 30.h,
-                            text1: "Repeat Ride".tr,
-                            fontSize: 12.sp,
-                            radius: 20.r,
                           ),
                         ),
                       ],
@@ -184,23 +176,38 @@ class RideCard extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: 16.h,
+          top: 8.h,
           right: 8.w,
           child: Stack(
+            alignment: Alignment.center,
             children: [
-              Container(width: 129.w, height: 73.h),
-              Positioned(
-                child: Image.asset(vehicleImage, width: 85.w),
-                top: 0,
-                left: 0,
+              Container(width: 80.w, height: 73.h),
+              Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 8.h),
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage(driverImage),
+                    radius: 23.r,
+                  ),
+                ),
               ),
               Positioned(
-                child: CircleAvatar(
-                  backgroundImage: AssetImage(driverImage),
-                  radius: 23.r,
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Align(
+                      child: ShowRatingStar(
+                        rating: "4.5",
+                        showSmall: showSmallForRating,
+                      ),
+                      alignment: Alignment.bottomCenter,
+                    ),
+                  ],
                 ),
-                top: 8.h,
-                right: 8.w,
               ),
             ],
           ),

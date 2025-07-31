@@ -15,91 +15,77 @@ class ReviewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppNormalAppBar(title: "Rate Your Ride".tr),
+      appBar: AppNormalAppBar(title: "Add Review"),
       body: Padding(
         padding: AppSpacing.screenPadding,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AppText(
-              text: "Driver Behaviors".tr,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 10.h),
-              padding: EdgeInsets.all(10.w),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.green.shade900),
-                borderRadius: BorderRadius.circular(12.r),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AppText(
+                text: "User Behaviors".tr,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w500,
               ),
-              child: Obx(
-                () => StarRatingWidget(
-                  selectedStars: controller.driverRating.value,
-                  onStarSelected: controller.setDriverRating,
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 10.h),
+                padding: EdgeInsets.all(10.w),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.green.shade900),
+                  borderRadius: BorderRadius.circular(12.r),
                 ),
-              ),
-            ),
-            AppSpacing.height16,
-            AppText(
-              text: "Car Condition".tr,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 10.h),
-              padding: EdgeInsets.all(10.w),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.green.shade900),
-                borderRadius: BorderRadius.circular(12.r),
-              ),
-              child: Obx(
-                () => StarRatingWidget(
-                  selectedStars: controller.carRating.value,
-                  onStarSelected: controller.setCarRating,
-                ),
-              ),
-            ),
-            AppSpacing.height30,
-            AppText(
-              text: "Write Overall Experience".tr,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 10.h),
-              height: Get.height * .32,
-              padding: EdgeInsets.all(10.w),
-              decoration: BoxDecoration(
-                color: const Color(0xff214F2D).withOpacity(0.2),
-                border: Border.all(color: const Color(0xff214F2D)),
-                borderRadius: BorderRadius.circular(12.r),
-              ),
-              child: TextField(
-                maxLines: null,
-                onChanged: controller.setExperience,
-                decoration: InputDecoration.collapsed(
-                  hintText: "Write here...".tr,
-                ),
-              ),
-            ),
-            SizedBox(height: 50.h),
-            AppButton(
-              text1: 'Submit'.tr,
-              callback: () {
-                Get.to(
-                  AppSuccessScreen(
-                    showMessage: false,
-                    bgColorGreen: true,
-                    btnText: "Back to Rides",
-                    title: "Ratings & Reviews Submitted successfully",
-                    subtitle:
-                        "Don’t worry, we’ll let you know if there’s a problem with your account",
+                child: Obx(
+                  () => StarRatingWidget(
+                    selectedStars: controller.driverRating.value,
+                    onStarSelected: controller.setDriverRating,
                   ),
-                );
-              },
-            ),
-          ],
+                ),
+              ),
+
+              AppSpacing.height30,
+              AppText(
+                text: "Write Overall Experience".tr,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w500,
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 10.h),
+                height: Get.height * .32,
+                padding: EdgeInsets.all(10.w),
+                decoration: BoxDecoration(
+                  color: const Color(0xff214F2D).withOpacity(0.2),
+                  border: Border.all(color: const Color(0xff214F2D)),
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+                child: TextField(
+                  maxLines: null,
+                  onChanged: controller.setExperience,
+                  decoration: InputDecoration.collapsed(
+                    hintText: "Write here...".tr,
+                  ),
+                ),
+              ),
+              SizedBox(height: 50.h),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsetsGeometry.all(22.r),
+        child: AppButton(
+          text1: 'Submit'.tr,
+          callback: () {
+            Get.to(
+              AppSuccessScreen(
+                showMessage: false,
+                bgColorGreen: true,
+                btnText: "Done",
+                title: "Ratings & Reviews Submitted successfully",
+                subtitle:
+                    "Don’t worry, we’ll let you know if there’s a problem with your account",
+              ),
+            );
+          },
         ),
       ),
     );

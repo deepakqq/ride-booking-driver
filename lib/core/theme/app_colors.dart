@@ -14,6 +14,7 @@ class AppColors {
   static const primaryDark = Color(0xFF2E6F40);
   static const primaryDarkBg = Color(0xFF24422c);
   static const greenDarkBg = Color(0xFF2E402B);
+  static const greenDarkBg1 = Color(0xFF2D6F3F);
 
   // Text Colors
   static const textDark = Colors.black;
@@ -25,6 +26,7 @@ class AppColors {
 
   // border
   static const borderBlack = Color(0xff666666);
+  static const borderLight = Color(0xffB9B9B9);
 
   // Success
   static const success = Color(0xFF00C851);
