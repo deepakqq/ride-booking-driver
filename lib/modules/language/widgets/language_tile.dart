@@ -86,7 +86,7 @@ class LanguageTile extends StatelessWidget {
             color: isSelected ? Colors.black : Colors.grey.shade400,
           ),
           onTap: () {
-            // controller.selectLanguage(language);
+            controller.selectLanguage(language);
           },
         ),
       );

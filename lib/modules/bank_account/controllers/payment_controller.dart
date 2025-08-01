@@ -1,4 +1,4 @@
-import 'package:annale_driver/modules/payment/repository/payment_repo.dart';
+import 'package:annale_driver/modules/bank_account/repository/payment_repo.dart';
 import 'package:get/get.dart';
 import '../models/card_model.dart';
 

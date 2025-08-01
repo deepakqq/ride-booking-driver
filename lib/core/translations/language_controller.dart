@@ -15,13 +15,13 @@ class LanguageController extends GetxController {
 
   @override
   void onInit() async {
-    // prefs = await SharedPreferences.getInstance();
-    // String langCode = prefs.getString('lang_code') ?? 'ht'; // default 'ht'
-    // String countryCode =
-    //     prefs.getString('country_code') ?? 'HT'; // default 'HT'
-    // selectedLocale.value = Locale(langCode, countryCode);
-    // Get.updateLocale(selectedLocale.value);
-    // super.onInit();
+    prefs = await SharedPreferences.getInstance();
+    String langCode = prefs.getString('lang_code') ?? 'ht'; // default 'ht'
+    String countryCode =
+        prefs.getString('country_code') ?? 'HT'; // default 'HT'
+    selectedLocale.value = Locale(langCode, countryCode);
+    Get.updateLocale(selectedLocale.value);
+    super.onInit();
   }
 
   Future<void> selectLanguage(LanguageModel language) async {

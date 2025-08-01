@@ -26,7 +26,7 @@ class DashboardScreen extends StatelessWidget {
     return Obx(
       () => Scaffold(
         extendBody: true,
-        appBar: AppAppbar(),
+        appBar: controller.showAppBar.value ? AppAppbar() : null,
         body: pages[controller.currentIndex.value],
         bottomNavigationBar: AppBottomNavigationBar(),
       ),

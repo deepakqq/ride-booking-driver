@@ -9,10 +9,12 @@ import 'package:annale_driver/modules/auth/views/change_password_screen.dart';
 
 import 'package:annale_driver/modules/delete_account/screens/deactive_page1.dart';
 import 'package:annale_driver/modules/help_and_contact/views/help_emergency_screen.dart';
+import 'package:annale_driver/modules/help_support/views/help_support_screen.dart';
 import 'package:annale_driver/modules/language/views/language_selection_screen.dart';
 import 'package:annale_driver/modules/my_vehicle/screens/my_vehicle_screen.dart';
 import 'package:annale_driver/modules/notification_setting/views/notification_setting_screen.dart';
-import 'package:annale_driver/modules/payment/views/payment_screen.dart';
+import 'package:annale_driver/modules/bank_account/views/payment_screen.dart';
+import 'package:annale_driver/modules/rating_review/view/rating_review_screen.dart';
 import 'package:annale_driver/modules/referral/views/referral_reward_screen.dart';
 import 'package:annale_driver/modules/terms_condition/views/privacy_security_screen.dart';
 import 'package:annale_driver/modules/terms_condition/views/tnc_screen.dart';
@@ -109,7 +111,7 @@ class AccountScreen extends StatelessWidget {
           ),
           AccountOptionTile(
             onTap: () {
-              // Get.to(() => HelpSupportScreen());
+              Get.to(() => HelpSupportScreen());
             },
             title: "Help & Support".tr,
             leadingIconPath: AppImages.iconHelpSupport,
@@ -132,7 +134,7 @@ class AccountScreen extends StatelessWidget {
 
           AccountOptionTile(
             onTap: () {
-              // Get.to(() => HelpEmergencyScreen());
+              Get.to(() => RatingReviewScreen());
             },
             title: "Ratings Overview".tr,
             leadingIconPath: AppImages.iconRatinOverview,

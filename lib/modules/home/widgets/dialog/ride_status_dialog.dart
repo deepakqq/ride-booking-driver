@@ -3,7 +3,8 @@ import 'package:annale_driver/core/values/app_fonts.dart';
 import 'package:annale_driver/core/values/app_images.dart';
 import 'package:annale_driver/core/values/app_redius.dart';
 import 'package:annale_driver/core/values/app_spacing.dart';
-import 'package:annale_driver/modules/home/views/pickup_screen.dart';
+import 'package:annale_driver/modules/home/controllers/ride_controller.dart';
+import 'package:annale_driver/modules/home/views/ride_nav_screen.dart';
 import 'package:annale_driver/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,6 +31,7 @@ class RideRequestDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    RideController controller = Get.find();
     return Dialog(
       backgroundColor:
           Colors.transparent, // Dialog's own background is transparent
@@ -227,7 +229,10 @@ class RideRequestDialog extends StatelessWidget {
   }
 }
 
-void showRideRequestDialog(BuildContext context) {
+void showRideRequestDialog({
+  required BuildContext context,
+  VoidCallback? onAccept,
+}) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -236,11 +241,7 @@ void showRideRequestDialog(BuildContext context) {
         rating: '4.4',
         pickupTime: '4 min',
         travelDistance: '1.4km',
-        onAccept: () {
-          print('Ride Accepted!');
-          Navigator.of(context).pop();
-          Get.to(() => PickupScreen());
-        },
+        onAccept: onAccept == null ? () {} : onAccept,
         onReject: () {
           print('Ride Rejected!');
           Navigator.of(context).pop();

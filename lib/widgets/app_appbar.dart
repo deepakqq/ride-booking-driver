@@ -1,6 +1,7 @@
 import 'package:annale_driver/core/values/app_spacing.dart';
 import 'package:annale_driver/modules/notification_setting/views/notification_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/utils.dart';
 
@@ -48,12 +49,12 @@ class AppAppbar extends StatelessWidget implements PreferredSizeWidget {
                   children: [
                     Text(
                       'Your Location'.tr,
-                      style: TextStyle(fontSize: 14, color: Colors.black54),
+                      style: TextStyle(fontSize: 12.sp, color: Colors.black),
                     ),
                     Text(
                       'Times Square, NY',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
                       ),

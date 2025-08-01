@@ -4,7 +4,7 @@ import 'package:annale_driver/core/routes/app_routes.dart';
 import 'package:annale_driver/core/translations/language_controller.dart';
 import 'package:annale_driver/core/translations/translations.dart';
 import 'package:annale_driver/modules/home/views/home_screen.dart';
-import 'package:annale_driver/modules/home/views/pickup_screen.dart';
+import 'package:annale_driver/modules/home/views/ride_nav_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

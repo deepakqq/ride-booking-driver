@@ -1,4 +1,5 @@
 import 'package:annale_driver/core/theme/app_colors.dart';
+import 'package:annale_driver/modules/home/widgets/bottom_sheet/cancel_ride_sheet.dart';
 import 'package:annale_driver/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,7 +9,8 @@ import 'package:annale_driver/core/values/app_spacing.dart';
 import 'package:annale_driver/core/values/app_fonts.dart';
 
 class OtpVerificationBottomSheet extends StatefulWidget {
-  const OtpVerificationBottomSheet({super.key});
+  final VoidCallback onNext;
+  const OtpVerificationBottomSheet({super.key, required this.onNext});
 
   @override
   State<OtpVerificationBottomSheet> createState() =>
@@ -102,6 +104,7 @@ class _OtpVerificationBottomSheetState
             child: TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
+                showCancelRideBottomSheet(context);
               },
               child: AppText(
                 text: "Cancel Ride",
@@ -161,15 +164,8 @@ class _OtpVerificationBottomSheetState
           ),
           AppSpacing.height30,
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: AppButton(
-              text1: "Next",
-              callback: () {
-                String otp = _getOtp();
-                print("Entered OTP: $otp");
-                Navigator.of(context).pop();
-              },
-            ),
+            padding: EdgeInsets.all(8.0),
+            child: AppButton(text1: "Next", callback: widget.onNext),
           ),
           AppSpacing.height16,
         ],
@@ -178,7 +174,7 @@ class _OtpVerificationBottomSheetState
   }
 }
 
-void showOtpBottomSheet(BuildContext context) {
+void showOtpBottomSheet({required BuildContext context, VoidCallback? onNext}) {
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -188,7 +184,9 @@ void showOtpBottomSheet(BuildContext context) {
         padding: EdgeInsets.only(
           bottom: MediaQuery.of(context).viewInsets.bottom,
         ),
-        child: const OtpVerificationBottomSheet(),
+        child: OtpVerificationBottomSheet(
+          onNext: onNext == null ? () {} : onNext,
+        ),
       );
     },
   );
