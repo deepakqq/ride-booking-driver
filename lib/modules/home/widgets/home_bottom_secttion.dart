@@ -60,7 +60,7 @@ class _HomeBottomSecttionState extends State<HomeBottomSecttion> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppText(
-            text: "Weekly Challenges",
+            text: "Weekly Challenges".tr,
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -75,23 +75,23 @@ class _HomeBottomSecttionState extends State<HomeBottomSecttion> {
                 Map<String, dynamic> challengeData;
                 if (index == 0) {
                   challengeData = {
-                    'title': 'Earn on Monday',
-                    'description': 'Complete 20 trips and get 35 HTG extra',
-                    'progressText': '2 trips done out of 20',
+                    'title': 'Earn on Monday'.tr,
+                    'description': 'Complete 20 trips and get 35 HTG extra'.tr,
+                    'progressText': '2 trips done out of 20'.tr,
                     'percentage': 20.0,
                   };
                 } else if (index == 1) {
                   challengeData = {
-                    'title': 'Earn on Tuesday',
-                    'description': 'Complete 40 trips and get 70 HTG Extra',
-                    'progressText': '2 trips done out of 40',
+                    'title': 'Earn on Tuesday'.tr,
+                    'description': 'Complete 40 trips and get 70 HTG Extra'.tr,
+                    'progressText': '2 trips done out of 40'.tr,
                     'percentage': 10.0,
                   };
                 } else {
                   challengeData = {
-                    'title': 'Weekend Bonus',
-                    'description': 'Complete 60 trips and get 105 HTG Extra',
-                    'progressText': '2 trips done out of 60',
+                    'title': 'Weekend Bonus'.tr,
+                    'description': 'Complete 60 trips and get 105 HTG Extra'.tr,
+                    'progressText': '2 trips done out of 60'.tr,
                     'percentage': 5.0,
                   };
                 }
@@ -127,11 +127,11 @@ class _HomeBottomSecttionState extends State<HomeBottomSecttion> {
             decoration: decoration,
             child: Row(
               children: [
-                _buildSummaryColumn("Earnings", "12.0 HTG"),
+                _buildSummaryColumn("Earnings".tr, "12.0 HTG"),
                 Container(height: 50.h, color: Color(0xff7990B780), width: 1),
-                _buildSummaryColumn("Online", "1hr 12 mins"),
+                _buildSummaryColumn("Online".tr, "1hr 12 mins"),
                 Container(height: 50.h, color: Color(0xff7990B780), width: 1),
-                _buildSummaryColumn("Rides", "02"),
+                _buildSummaryColumn("Rides".tr, "02"),
               ],
             ),
           ),

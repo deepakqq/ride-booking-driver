@@ -28,18 +28,19 @@ class _OnboardingScreenState extends State<OnboardingScreen>
   final onboardingData = [
     {
       'image': 'assets/images/onboarding/1.png',
-      'title': 'Ride with Comfort',
-      'description': 'Enjoy reliable and safe rides\nat your convenience.',
+      'title': 'Ride with Comfort'.tr,
+      'description': 'Enjoy reliable and safe rides\nat your convenience.'.tr,
     },
     {
       'image': 'assets/images/onboarding/2.png',
-      'title': 'Track your Ride',
-      'description': 'Stay updated in real-time\nwith driver location.',
+      'title': 'Track your Ride'.tr,
+      'description': 'Stay updated in real-time\nwith driver location.'.tr,
     },
     {
       'image': 'assets/images/onboarding/3.png',
-      'title': 'Easy Payments',
-      'description': 'Multiple payment options for\na hassle-free experience.',
+      'title': 'Easy Payments'.tr,
+      'description':
+          'Multiple payment options for\na hassle-free experience.'.tr,
     },
   ];
 
@@ -208,7 +209,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                             gotoLogin();
                           },
                           child: AppText(
-                            text: "Skip",
+                            text: "Skip".tr,
                             color: Color(0xff545454),
                             letterSpacing: 1,
                           ),
@@ -231,7 +232,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                             ),
                             child: _expanded
                                 ? AppText(
-                                    text: "Get Started",
+                                    text: "Get Started".tr,
                                     color: Colors.white,
 
                                     fontSize: 16.sp,

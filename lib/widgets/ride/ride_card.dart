@@ -83,7 +83,7 @@ class RideCard extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            '\$$price',
+                            '$price',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,

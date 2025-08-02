@@ -176,6 +176,7 @@ class _OtpVerificationBottomSheetState
 
 void showOtpBottomSheet({required BuildContext context, VoidCallback? onNext}) {
   showModalBottomSheet(
+    isDismissible: false,
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,

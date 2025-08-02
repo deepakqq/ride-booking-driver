@@ -42,7 +42,7 @@ class _EditVehicleScreenState extends State<EditVehicleScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppNormalAppBar(title: "Edit Vehicle Details"),
+      appBar: AppNormalAppBar(title: "Edit Vehicle Details".tr),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -97,7 +97,7 @@ class _EditVehicleScreenState extends State<EditVehicleScreen> {
                 ),
                 AppSpacing.height16,
                 Text(
-                  "Attach photos of the vehicle",
+                  "Attach photos of the vehicle".tr,
                   style: TextStyle(
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
@@ -244,10 +244,9 @@ class _EditVehicleScreenState extends State<EditVehicleScreen> {
           callback: () {
             showAnimatadSuccessDialog(
               context,
-              message: "You Has Been Successfully Edited This Vehicle.",
+              message: "You Has Been Successfully Edited This Vehicle.".tr,
               lottieAssetPath: 'assets/ani-check.json',
               onDismiss: () {
-                print("Dialog closed, navigating back...");
                 Navigator.of(context).pop();
               },
             );

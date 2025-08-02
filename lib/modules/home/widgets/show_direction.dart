@@ -9,11 +9,15 @@ class ShowDirection extends StatelessWidget {
   final String icon;
   final String distance;
   final String instruction;
+  final Color colorFirst;
+  final Color colorSecond;
   const ShowDirection({
     Key? key,
     required this.distance,
     required this.icon,
     required this.instruction,
+    required this.colorFirst,
+    required this.colorSecond,
   }) : super(key: key);
 
   @override
@@ -22,7 +26,7 @@ class ShowDirection extends StatelessWidget {
       height: 80.h,
 
       decoration: BoxDecoration(
-        color: Color(0xff0B993C),
+        color: colorFirst,
         borderRadius: AppRadius.r8, // गोल किनारे
         boxShadow: [
           BoxShadow(
@@ -39,7 +43,7 @@ class ShowDirection extends StatelessWidget {
             width: 80.r,
             height: 80.r,
             decoration: BoxDecoration(
-              color: Color(0xff0DB646), // ऑरेंज बैकग्राउंड
+              color: colorSecond, // ऑरेंज बैकग्राउंड
               borderRadius: AppRadius.r8.copyWith(
                 topRight: Radius.circular(0),
                 bottomRight: Radius.circular(0),

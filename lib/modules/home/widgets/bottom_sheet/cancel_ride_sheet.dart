@@ -24,8 +24,8 @@ class _CancelRideBottomSheetState extends State<CancelRideBottomSheet> {
   String? _selectedReason;
 
   // कैंसिलेशन के कारण
-  final List<String> _cancellationReasons = const [
-    "Passenger no-show",
+  final List<String> _cancellationReasons = [
+    "Passenger no-show".tr,
     "Incorrect or unsafe pickup location",
     "Vehicle issue",
     "Passenger behavior concern",

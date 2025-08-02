@@ -1,13 +1,16 @@
 import 'package:annale_driver/core/theme/app_colors.dart';
 import 'package:annale_driver/core/theme/app_gradient.dart';
 import 'package:annale_driver/core/values/app_images.dart';
+import 'package:annale_driver/modules/help_support/views/chat_screen.dart';
 import 'package:annale_driver/modules/home/controllers/ride_controller.dart';
 import 'package:annale_driver/modules/home/widgets/bottom_sheet/cancel_ride_sheet.dart';
 import 'package:annale_driver/modules/home/widgets/bottom_sheet/otp_verification_sheet.dart';
+import 'package:annale_driver/modules/home/widgets/bottom_sheet/payment_option_sheet.dart';
 import 'package:annale_driver/modules/home/widgets/ride_details_section.dart';
 import 'package:annale_driver/modules/home/widgets/show_direction.dart';
 import 'package:annale_driver/modules/home/widgets/show_rating_star.dart';
 import 'package:annale_driver/widgets/app_button.dart';
+import 'package:annale_driver/widgets/dialogs/animatated_success_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -34,15 +37,17 @@ class _RideNavScreenState extends State<RideNavScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    rideController.startJourney();
     // ignore: implicit_call_tearoffs
     _statusDisposer = ever(rideController.rideStatus, (RideStatus status) {
       if (status == RideStatus.atPickup) {
         showOtpBottomSheet(
           context: context,
           onNext: () {
+            rideController.startJourney();
             rideController.rideStatus.value = RideStatus.enRouteToDropoff;
             print(rideController.rideStatus);
-            Future.delayed(Duration(seconds: 3), () {
+            Future.delayed(Duration(seconds: 6), () {
               rideController.rideStatus.value = RideStatus.atDropoff;
               print(rideController.rideStatus);
             });
@@ -52,6 +57,8 @@ class _RideNavScreenState extends State<RideNavScreen> {
       }
     });
   }
+
+  startNav() {}
 
   @override
   void dispose() {
@@ -72,9 +79,9 @@ class _RideNavScreenState extends State<RideNavScreen> {
             Positioned.fill(
               child: Container(
                 color: Colors.grey[300],
-                child: const Center(
+                child: Center(
                   child: Text(
-                    "Google Map Placeholder",
+                    "Google Map Placeholder".tr,
                     style: TextStyle(color: Colors.black54),
                   ),
                 ),
@@ -87,9 +94,12 @@ class _RideNavScreenState extends State<RideNavScreen> {
               left: AppSpacing.md,
               right: AppSpacing.md,
               child: ShowDirection(
-                instruction: "Go straight on JSQ Complex Road",
-                distance: "400m",
-                icon: "",
+                instruction:
+                    "${rideController.currentDirectionText}\n${rideController.currentRoadName}",
+                distance: "${rideController.currentDirectionDistance}",
+                icon: rideController.currentDirectionIcon.value,
+                colorFirst: rideController.fColor!,
+                colorSecond: rideController.sColor!,
               ),
             ),
 
@@ -134,7 +144,7 @@ class _RideNavScreenState extends State<RideNavScreen> {
                               ),
                               AppSpacing.width8,
                               AppText(
-                                text: "Navigate",
+                                text: "Navigate".tr,
                                 fontSize: AppFonts.size16,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black,
@@ -171,19 +181,20 @@ class _RideNavScreenState extends State<RideNavScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             _buildCircularIconButton(
-                              AppImages.iconPhone,
-                              Colors.white,
+                              icon: AppImages.iconPhone,
+                              color: Colors.white,
+                              callback: () {},
                             ), // कॉल आइकन
                             Column(
                               children: [
                                 AppText(
-                                  text: "4 min away",
+                                  text: "4 min away".tr,
                                   fontSize: AppFonts.size16,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black,
                                 ),
                                 AppText(
-                                  text: "Picking up Rebecca",
+                                  text: "Picking up Rebecca".tr,
                                   fontSize: AppFonts.size12,
                                   color: AppColors.textGrey,
                                 ),
@@ -194,12 +205,25 @@ class _RideNavScreenState extends State<RideNavScreen> {
                                     rideController.rideStatus.value ==
                                         RideStatus.atDropoff
                                 ? _buildCircularIconButton(
-                                    AppImages.iconSos,
-                                    Colors.white,
+                                    callback: () {
+                                      showAnimatadSuccessDialog(
+                                        context,
+                                        message:
+                                            "An SOS message and your ride details have been sent to the Ann Ale team.",
+                                        lottieAssetPath: "assets/check.json",
+                                      );
+                                    },
+                                    icon: AppImages.iconSos,
+                                    color: Colors.white,
                                   )
                                 : _buildCircularIconButton(
-                                    AppImages.iconChat1,
-                                    Colors.green,
+                                    icon: AppImages.iconChat1,
+                                    color: Colors.green,
+                                    callback: () {
+                                      Get.to(
+                                        () => ChatScreen(title: "User Name"),
+                                      );
+                                    },
                                   ),
                           ],
                         ),
@@ -229,7 +253,7 @@ class _RideNavScreenState extends State<RideNavScreen> {
 
                             Expanded(
                               child: AppText(
-                                text: "Rebecca Davis",
+                                text: "Rebecca Davis".tr,
                                 fontSize: AppFonts.size16,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
@@ -248,8 +272,11 @@ class _RideNavScreenState extends State<RideNavScreen> {
                         rideController.rideStatus.value == RideStatus.atDropoff
                             ? AppButton(
                                 height: 50.h,
-                                text1: "Request Payment",
+                                text1: "Request Payment".tr,
                                 fontSize: 16.sp,
+                                callback: () {
+                                  showPaymentOptionsSheet();
+                                },
                               )
                             : SizedBox(),
 
@@ -263,7 +290,7 @@ class _RideNavScreenState extends State<RideNavScreen> {
                               showCancelRideBottomSheet(context);
                             },
                             child: AppText(
-                              text: "Cancle Ride",
+                              text: "Cancle Ride".tr,
                               color: Colors.red,
                               fontSize: 16.sp,
                               fontWeight: FontWeight.bold,
@@ -284,17 +311,24 @@ class _RideNavScreenState extends State<RideNavScreen> {
   }
 
   // --- Helper Widgets ---
-  Widget _buildCircularIconButton(String icon, Color color) {
-    return Container(
-      padding: EdgeInsets.all(12.r),
-      width: 50.r,
-      height: 50.r,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
+  Widget _buildCircularIconButton({
+    required String icon,
+    required Color color,
+    required VoidCallback callback,
+  }) {
+    return GestureDetector(
+      onTap: callback,
+      child: Container(
+        padding: EdgeInsets.all(12.r),
+        width: 50.r,
+        height: 50.r,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
 
-        gradient: AppGradients.green,
+          gradient: AppGradients.green,
+        ),
+        child: Image.asset(icon, height: 24.h, width: 24.w, color: color),
       ),
-      child: Image.asset(icon, height: 24.h, width: 24.w, color: color),
     );
   }
 }

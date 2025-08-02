@@ -13,7 +13,6 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   AppBinding().dependencies();
   final languageController = Get.put(LanguageController());
-  languageController.setLocale('en', 'US');
   runApp(MyApp(languageController: languageController));
   Get.put(ThemeController());
 }

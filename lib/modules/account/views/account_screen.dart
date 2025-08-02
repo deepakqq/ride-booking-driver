@@ -102,13 +102,13 @@ class AccountScreen extends StatelessWidget {
             title: "Language".tr,
             leadingIconPath: AppImages.iconLanguage,
           ),
-          AccountOptionTile(
-            onTap: () {
-              // dashboardController.currentIndex.value = 2;
-            },
-            title: "Wallet".tr,
-            leadingIconPath: AppImages.iconWallet,
-          ),
+          // AccountOptionTile(
+          //   onTap: () {
+          //     // dashboardController.currentIndex.value = 2;
+          //   },
+          //   title: "Wallet".tr,
+          //   leadingIconPath: AppImages.iconWallet,
+          // ),
           AccountOptionTile(
             onTap: () {
               Get.to(() => HelpSupportScreen());

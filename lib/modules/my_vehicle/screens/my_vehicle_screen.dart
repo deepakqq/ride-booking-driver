@@ -11,7 +11,7 @@ class MyVehicleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppNormalAppBar(title: "My Vehicle"),
+      appBar: AppNormalAppBar(title: "My Vehicle".tr),
       body: ListView(
         padding: AppSpacing.screenPadding,
         children: [

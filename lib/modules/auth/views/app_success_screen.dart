@@ -90,6 +90,10 @@ class _AppSuccessScreenState extends State<AppSuccessScreen> {
                     Get.back();
                     Get.back();
                   }
+                  if (widget.btnText == "Go Online") {
+                    Get.back();
+                    Get.back();
+                  }
                   if (widget.btnText == "Rate Your Ride") {
                     Get.back();
                     Get.back();

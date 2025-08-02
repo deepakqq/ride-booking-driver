@@ -110,8 +110,12 @@ class AppImages {
   static const iconRoute = '$_icons/icon-route.png';
   static const iconPhone = '$_icons/icon-phone.png';
   static const iconGoUp = '$_icons/icon-go-up.png';
+  static const iconQr = '$_icons/icon-qr.png';
+  static const iconCard = '$_icons/icon-card.png';
+  static const iconCash = '$_icons/icon-cash.png';
   static const iconGoLeft = '$_icons/icon-go-left.png';
   static const pBike = '$_base/p-bike.png';
+  static const QR = '$_base/qr.png';
 
   // referral reward
   // icons
@@ -125,4 +129,8 @@ class AppImages {
   static const uBank = '$_base/u-bank.png';
   static const aBank = '$_base/a-bank.png';
   static const iconEditC = '$_icons/icon-edit-c.png';
+
+  // lottie
+  static const cardMoney = 'assets/json/card-money.json';
+  static const cardSwip = 'assets/json/card-swip.json';
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:annale_driver/widgets/app_text.dart';
+import 'package:get/get.dart';
 import 'package:annale_driver/core/values/app_fonts.dart';
 import 'package:annale_driver/core/values/app_redius.dart';
 import 'package:annale_driver/core/values/app_spacing.dart';
@@ -26,17 +27,13 @@ class CancelConfirmationDialog extends StatelessWidget {
         children: [
           AppSpacing.height30,
 
-          Icon(
-            Icons.warning_rounded,
-            color: const Color(0xFFFF5252),
-            size: AppFonts.size40,
-          ),
+          Image.asset('assets/images/cancel-ride.png', height: 70.h),
           AppSpacing.height16,
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
             child: AppText(
-              text: "Do you want to cancel the ride?",
+              text: "Do you want to cancel the ride?".tr,
               fontSize: AppFonts.size20,
               fontWeight: FontWeight.bold,
               color: Colors.black,
@@ -48,7 +45,7 @@ class CancelConfirmationDialog extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
             child: AppText(
-              text: "You can't undo this action",
+              text: "You can't undo this action".tr,
               fontSize: AppFonts.size12,
               color: Colors.black,
               align: TextAlign.center,
@@ -64,20 +61,24 @@ class CancelConfirmationDialog extends StatelessWidget {
                     left: AppSpacing.md,
                     right: AppSpacing.sm,
                   ),
-                  child: OutlinedButton(
-                    onPressed: onDismiss,
-                    style: OutlinedButton.styleFrom(
-                      side: BorderSide(color: Colors.grey.shade400, width: 1.r),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: AppRadius.r50,
+                  child: GestureDetector(
+                    onTap: onDismiss,
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 55.h,
+                      padding: EdgeInsets.symmetric(),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50.r),
+                        // color: Color(0xFFFF5252),
+                        border: Border.all(color: Colors.black),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: AppSpacing.md),
-                    ),
-                    child: AppText(
-                      text: "No",
-                      fontSize: AppFonts.size16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+
+                      child: AppText(
+                        text: "No".tr,
+                        fontSize: AppFonts.size16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
@@ -88,21 +89,24 @@ class CancelConfirmationDialog extends StatelessWidget {
                     left: AppSpacing.sm,
                     right: AppSpacing.md,
                   ),
-                  child: ElevatedButton(
-                    onPressed: onConfirmCancel,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFFF5252),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: AppRadius.r50,
+                  child: GestureDetector(
+                    onTap: onConfirmCancel,
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 55.h,
+                      padding: EdgeInsets.symmetric(),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50.r),
+                        color: Color(0xFFFF5252),
+                        border: Border.all(color: Colors.black),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: AppSpacing.md),
-                      elevation: 0,
-                    ),
-                    child: AppText(
-                      text: "Yes, Cancel",
-                      fontSize: AppFonts.size16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+
+                      child: AppText(
+                        text: "Yes, Cancel".tr,
+                        fontSize: AppFonts.size16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),

@@ -2,6 +2,7 @@ import 'package:annale_driver/core/theme/app_gradient.dart';
 import 'package:annale_driver/core/values/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class OnlineBtn extends StatelessWidget {
   final bool isDarkMode;
@@ -40,7 +41,7 @@ class OnlineBtn extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Text(
-                  isDarkMode ? 'Online' : 'Offline',
+                  isDarkMode ? 'Online'.tr : 'Offline'.tr,
                   style: TextStyle(
                     color: isDarkMode ? Colors.white : Colors.white,
                     fontSize: 14.sp,

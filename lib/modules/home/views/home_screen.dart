@@ -38,13 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
             Navigator.of(context).pop();
 
             Get.to(() => RideNavScreen());
-            Future.delayed(Duration(seconds: 3), () {
+            Future.delayed(Duration(seconds: 6), () {
               rideController.rideStatus.value = RideStatus.atPickup;
-              print(rideController.rideStatus);
-              print(rideController.rideStatus);
-              print(rideController.rideStatus);
-              print(rideController.rideStatus);
-              print(rideController.rideStatus);
+              rideController.startJourney();
             });
           },
         );

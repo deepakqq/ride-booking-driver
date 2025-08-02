@@ -1,3 +1,5 @@
+import 'package:annale_driver/core/values/app_images.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'dart:async';
 
@@ -28,6 +30,11 @@ class RideController extends GetxController {
   RxString currentDirectionText = 'Go straight on JSQ'.obs;
   RxString currentRoadName = 'Complex Road'.obs;
   RxString currentDirectionDistance = '400 m'.obs;
+  RxString currentDirectionIcon = "".obs;
+  Color? fColor = Color(0xff0B993C);
+  Color? sColor = Color(0xff0DB646);
+  // 'f-color': Color(0xff0B993C),
+  // 's-color': Color(0xff0DB646),
 
   RxDouble rideFare = 125.50.obs;
 
@@ -49,21 +56,40 @@ class RideController extends GetxController {
     if (rideStatus.value == RideStatus.newRequest) {
       _timer?.cancel();
       rideStatus.value = RideStatus.enRouteToPickup;
-      _startPickupJourney();
     }
   }
 
-  void _startPickupJourney() {
+  void startJourney() {
     _timer?.cancel();
     int currentStep = 0;
-    List<Map<String, String>> pickupDirections = [
+    List<Map<String, dynamic>> pickupDirections = [
+      {
+        'text': 'Take right',
+        'road': 'on Elm Street',
+        'distance': '100 m',
+        'icon': "assets/images/icons/go-up-left",
+        'f-color': Color(0xffF09F02),
+        's-color': Color(0xffCD8800),
+      },
+      //    colorFirst: Color(0xff0B993C),
+      // colorSecond: Color(0xff0DB646),
       {
         'text': 'Go straight on JSQ',
         'road': 'Complex Road',
         'distance': '400 m',
+        'icon': "assets/images/icons/go-turn-left",
+        'f-color': Color(0xffFC0B0A),
+        's-color': Color(0xffCA0908),
       },
-      {'text': 'Take right', 'road': 'on Elm Street', 'distance': '100 m'},
-      {'text': 'Go straight', 'road': 'for destination', 'distance': '100 m'},
+
+      {
+        'text': 'Go straight',
+        'road': 'for destination',
+        'distance': '100 m',
+        'icon': "assets/images/icons/go-up-left",
+        'f-color': Color(0xff0B993C),
+        's-color': Color(0xff0DB646),
+      },
     ];
 
     _timer = Timer.periodic(const Duration(seconds: 2), (timer) {
@@ -72,16 +98,15 @@ class RideController extends GetxController {
         currentRoadName.value = pickupDirections[currentStep]['road']!;
         currentDirectionDistance.value =
             pickupDirections[currentStep]['distance']!;
+        currentDirectionIcon.value = pickupDirections[currentStep]['icon']!;
+        fColor = pickupDirections[currentStep]['f-color']!;
+        sColor = pickupDirections[currentStep]['s-color']!;
         currentStep++;
       } else {
         timer.cancel();
-        rideStatus.value = RideStatus.atPickup;
-        _startOtpVerification();
       }
     });
   }
-
-  void _startOtpVerification() {}
 
   void verifyOtp() {
     rideStatus.value = RideStatus.enRouteToDropoff;

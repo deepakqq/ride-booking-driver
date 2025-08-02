@@ -79,7 +79,7 @@ class ReviewScreen extends StatelessWidget {
               AppSuccessScreen(
                 showMessage: false,
                 bgColorGreen: true,
-                btnText: "Done",
+                btnText: "Go Online",
                 title: "Ratings & Reviews Submitted successfully",
                 subtitle:
                     "Don’t worry, we’ll let you know if there’s a problem with your account",

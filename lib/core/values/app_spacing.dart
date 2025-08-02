@@ -31,6 +31,7 @@ class AppSpacing {
   // Horizontal gaps
   static SizedBox width4 = SizedBox(width: 4.w);
   static SizedBox width8 = SizedBox(width: 8.w);
+  static SizedBox width10 = SizedBox(width: 10.w);
   static SizedBox width16 = SizedBox(width: 16.w);
   static SizedBox width32 = SizedBox(width: 32.w);
 
