@@ -116,6 +116,7 @@ class AppImages {
   static const iconGoLeft = '$_icons/icon-go-left.png';
   static const pBike = '$_base/p-bike.png';
   static const QR = '$_base/qr.png';
+  static const iconDLocation = '$_icons/d-location.png';
 
   // referral reward
   // icons

@@ -1,4 +1,4 @@
-package com.flyweis.annale_driver
+package com.flyweis.annaledriver.app
 
 import io.flutter.embedding.android.FlutterActivity
 

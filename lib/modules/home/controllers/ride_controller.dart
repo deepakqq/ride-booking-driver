@@ -1,7 +1,9 @@
-import 'package:annale_driver/core/values/app_images.dart';
-import 'package:flutter/rendering.dart';
-import 'package:get/get.dart';
 import 'dart:async';
+import 'package:annale_driver/core/values/app_images.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 
 enum RideStatus {
   idle,
@@ -16,7 +18,32 @@ enum RideStatus {
 }
 
 class RideController extends GetxController {
+  GoogleMapController? homeMapController;
+  GoogleMapController? rideMapController;
+
   Rx<RideStatus> rideStatus = RideStatus.idle.obs;
+  RxBool isOnline = false.obs;
+  Location location = Location();
+  Rx<LatLng?> currentLocation = Rx<LatLng?>(null);
+
+  BitmapDescriptor? driverIcon;
+  BitmapDescriptor? userIcon;
+
+  StreamSubscription<LocationData>? locationSubscription;
+
+  final Set<Marker> markers = <Marker>{};
+  final Set<Polyline> polylines = <Polyline>{};
+
+  static const CameraPosition kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
+
+  final List<LatLng> latLen = [
+    const LatLng(37.42796133580664, -122.085749655962),
+    const LatLng(37.43296265331129, -122.08832317337799),
+    const LatLng(37.43173245331129, -122.09232317337799),
+  ];
 
   RxString riderName = 'Rebecca Davis'.obs;
   RxString riderRating = '4.4'.obs;
@@ -164,11 +191,191 @@ class RideController extends GetxController {
     currentDirectionText.value = 'Go straight on JSQ';
     currentRoadName.value = 'Complex Road';
     currentDirectionDistance.value = '400 m';
+    clearRouteFromMap();
+  }
+
+  Future<void> _initializeLocation() async {
+    bool serviceEnabled;
+    PermissionStatus permissionGranted;
+
+    serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
+        return;
+      }
+    }
+
+    permissionGranted = await location.hasPermission();
+    if (permissionGranted == PermissionStatus.denied) {
+      permissionGranted = await location.requestPermission();
+      if (permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+
+    final locationData = await location.getLocation();
+    currentLocation.value = LatLng(
+      locationData.latitude!,
+      locationData.longitude!,
+    );
+  }
+
+  Future<void> _loadCustomMarker() async {
+    driverIcon = await BitmapDescriptor.fromAssetImage(
+      const ImageConfiguration(size: Size(48, 48)),
+      'assets/images/icons/icon-map-driver.png',
+    );
+    userIcon = await BitmapDescriptor.fromAssetImage(
+      const ImageConfiguration(size: Size(48, 48)),
+      'assets/images/icons/icon-end.png',
+    );
+  }
+
+  void initializeMap() {
+    markers.clear();
+    polylines.clear();
+    if (currentLocation.value != null) {
+      markers.add(
+        Marker(
+          markerId: const MarkerId('driver'),
+          position: currentLocation.value!,
+          icon: driverIcon ?? BitmapDescriptor.defaultMarker,
+        ),
+      );
+    }
+    update();
+  }
+
+  void drawRouteToUser({List<LatLng> routePoints = const []}) {
+    polylines.clear();
+    if (routePoints.isNotEmpty) {
+      polylines.add(
+        Polyline(
+          polylineId: const PolylineId('route'),
+          points: routePoints,
+          color: Colors.blue,
+          width: 5,
+        ),
+      );
+      markers.add(
+        Marker(
+          markerId: const MarkerId('user'),
+          position: routePoints.last,
+          icon: userIcon ?? BitmapDescriptor.defaultMarker,
+        ),
+      );
+    } else {
+      polylines.add(
+        Polyline(
+          polylineId: const PolylineId('route'),
+          points: latLen,
+          color: Colors.blue,
+          width: 5,
+        ),
+      );
+      markers.add(
+        Marker(
+          markerId: const MarkerId('user'),
+          position: latLen.last,
+          icon: userIcon ?? BitmapDescriptor.defaultMarker,
+        ),
+      );
+    }
+    update();
+  }
+
+  void clearRouteFromMap() {
+    polylines.clear();
+    markers.removeWhere((m) => m.markerId.value == 'user');
+    update();
+  }
+
+  void goOnline() {
+    isOnline.value = true;
+    if (homeMapController != null) {
+      _startLocationUpdates();
+    }
+    update();
+  }
+
+  void goOffline() {
+    isOnline.value = false;
+    _stopLocationUpdates();
+    update();
+  }
+
+  void _startLocationUpdates() {
+    locationSubscription = location.onLocationChanged.listen((
+      LocationData newLocation,
+    ) {
+      currentLocation.value = LatLng(
+        newLocation.latitude!,
+        newLocation.longitude!,
+      );
+      if (homeMapController != null) {
+        homeMapController!.animateCamera(
+          CameraUpdate.newLatLng(currentLocation.value!),
+        );
+      }
+      if (rideMapController != null) {
+        rideMapController!.animateCamera(
+          CameraUpdate.newLatLng(currentLocation.value!),
+        );
+      }
+      markers.removeWhere((m) => m.markerId.value == 'driver');
+      markers.add(
+        Marker(
+          markerId: const MarkerId('driver'),
+          position: currentLocation.value!,
+          icon: driverIcon ?? BitmapDescriptor.defaultMarker,
+        ),
+      );
+      update();
+    });
+  }
+
+  void _stopLocationUpdates() {
+    locationSubscription?.cancel();
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    _initializeLocation();
+    _loadCustomMarker().then((_) {
+      initializeMap();
+    });
+    isOnline.value = true;
+  }
+
+  void onHomeMapCreated(GoogleMapController controller) {
+    homeMapController = controller;
+    if (currentLocation.value != null) {
+      homeMapController?.animateCamera(
+        CameraUpdate.newLatLng(currentLocation.value!),
+      );
+    }
+    if (isOnline.value) {
+      _startLocationUpdates();
+    }
+  }
+
+  void onRideMapCreated(GoogleMapController controller) {
+    rideMapController = controller;
+    if (currentLocation.value != null) {
+      rideMapController?.animateCamera(
+        CameraUpdate.newLatLng(currentLocation.value!),
+      );
+    }
   }
 
   @override
   void onClose() {
+    homeMapController?.dispose();
+    rideMapController?.dispose();
     _timer?.cancel();
+    _stopLocationUpdates();
     super.onClose();
   }
 }

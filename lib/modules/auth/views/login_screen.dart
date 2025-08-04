@@ -6,6 +6,7 @@ import 'package:annale_driver/modules/auth/widgets/login_singup_text.dart';
 import 'package:annale_driver/core/values/app_fonts.dart';
 import 'package:annale_driver/core/values/app_images.dart';
 import 'package:annale_driver/modules/auth/widgets/social_login_section.dart';
+import 'package:annale_driver/modules/dashboard/bindings/dashboard_binding.dart';
 import 'package:annale_driver/modules/dashboard/views/dashboard_screen.dart';
 import 'package:annale_driver/widgets/app_button.dart';
 import 'package:annale_driver/widgets/app_text.dart';
@@ -62,7 +63,10 @@ class _LoginScreenState extends State<LoginScreen> {
               AppButton(
                 text1: "Login".tr,
                 callback: () {
-                  Get.offAll(() => DashboardScreen());
+                  Get.offAll(
+                    () => DashboardScreen(),
+                    binding: DashboardBinding(),
+                  );
                 },
               ),
               SizedBox(height: 24.h),

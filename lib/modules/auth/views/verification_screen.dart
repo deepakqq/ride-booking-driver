@@ -38,7 +38,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
               AppButton(
                 text1: "Verify".tr,
                 callback: () {
-                  Get.to(() => AppSuccessScreen());
+                  Get.to(() => AppSuccessScreen(btnText: "Back to Log in"));
                 },
                 // callback: widget.onVerificationSuccess,
               ),

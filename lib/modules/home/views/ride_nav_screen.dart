@@ -10,9 +10,12 @@ import 'package:annale_driver/modules/home/widgets/ride_details_section.dart';
 import 'package:annale_driver/modules/home/widgets/show_direction.dart';
 import 'package:annale_driver/modules/home/widgets/show_rating_star.dart';
 import 'package:annale_driver/widgets/app_button.dart';
+import 'dart:async';
+
 import 'package:annale_driver/widgets/dialogs/animatated_success_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:annale_driver/widgets/app_text.dart';
 import 'package:annale_driver/core/values/app_fonts.dart';
@@ -35,21 +38,19 @@ class _RideNavScreenState extends State<RideNavScreen> {
   late final VoidCallback _statusDisposer;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     rideController.startJourney();
-    // ignore: implicit_call_tearoffs
+
     _statusDisposer = ever(rideController.rideStatus, (RideStatus status) {
       if (status == RideStatus.atPickup) {
         showOtpBottomSheet(
           context: context,
           onNext: () {
             rideController.startJourney();
+            print(" D D D D DD");
             rideController.rideStatus.value = RideStatus.enRouteToDropoff;
-            print(rideController.rideStatus);
-            Future.delayed(Duration(seconds: 6), () {
+            Future.delayed(const Duration(seconds: 6), () {
               rideController.rideStatus.value = RideStatus.atDropoff;
-              print(rideController.rideStatus);
             });
             Get.back();
           },
@@ -72,19 +73,17 @@ class _RideNavScreenState extends State<RideNavScreen> {
     // RideController
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Obx(() {
-        return Stack(
+      body: GetBuilder<RideController>(
+        builder: (controller) => Stack(
           children: [
             // --- Map Placeholder ---
             Positioned.fill(
-              child: Container(
-                color: Colors.grey[300],
-                child: Center(
-                  child: Text(
-                    "Google Map Placeholder".tr,
-                    style: TextStyle(color: Colors.black54),
-                  ),
-                ),
+              child: GoogleMap(
+                mapType: MapType.normal,
+                initialCameraPosition: RideController.kGooglePlex,
+                onMapCreated: controller.onRideMapCreated,
+                markers: controller.markers,
+                polylines: controller.polylines,
               ),
             ),
 
@@ -93,13 +92,15 @@ class _RideNavScreenState extends State<RideNavScreen> {
               top: 50.h,
               left: AppSpacing.md,
               right: AppSpacing.md,
-              child: ShowDirection(
-                instruction:
-                    "${rideController.currentDirectionText}\n${rideController.currentRoadName}",
-                distance: "${rideController.currentDirectionDistance}",
-                icon: rideController.currentDirectionIcon.value,
-                colorFirst: rideController.fColor!,
-                colorSecond: rideController.sColor!,
+              child: Obx(
+                () => ShowDirection(
+                  instruction:
+                      "${controller.currentDirectionText}\n${controller.currentRoadName}",
+                  distance: "${controller.currentDirectionDistance}",
+                  icon: controller.currentDirectionIcon.value,
+                  colorFirst: controller.fColor!,
+                  colorSecond: controller.sColor!,
+                ),
               ),
             ),
 
@@ -200,31 +201,34 @@ class _RideNavScreenState extends State<RideNavScreen> {
                                 ),
                               ],
                             ),
-                            rideController.rideStatus.value ==
-                                        RideStatus.enRouteToDropoff ||
-                                    rideController.rideStatus.value ==
-                                        RideStatus.atDropoff
-                                ? _buildCircularIconButton(
-                                    callback: () {
-                                      showAnimatadSuccessDialog(
-                                        context,
-                                        message:
-                                            "An SOS message and your ride details have been sent to the Ann Ale team.",
-                                        lottieAssetPath: "assets/check.json",
-                                      );
-                                    },
-                                    icon: AppImages.iconSos,
-                                    color: Colors.white,
-                                  )
-                                : _buildCircularIconButton(
-                                    icon: AppImages.iconChat1,
-                                    color: Colors.green,
-                                    callback: () {
-                                      Get.to(
-                                        () => ChatScreen(title: "User Name"),
-                                      );
-                                    },
-                                  ),
+                            Obx(
+                              () =>
+                                  controller.rideStatus.value ==
+                                          RideStatus.enRouteToDropoff ||
+                                      controller.rideStatus.value ==
+                                          RideStatus.atDropoff
+                                  ? _buildCircularIconButton(
+                                      callback: () {
+                                        showAnimatadSuccessDialog(
+                                          context,
+                                          message:
+                                              "An SOS message and your ride details have been sent to the Ann Ale team.",
+                                          lottieAssetPath: "assets/check.json",
+                                        );
+                                      },
+                                      icon: AppImages.iconSos,
+                                      color: Colors.white,
+                                    )
+                                  : _buildCircularIconButton(
+                                      icon: AppImages.iconChat1,
+                                      color: Colors.green,
+                                      callback: () {
+                                        Get.to(
+                                          () => ChatScreen(title: "User Name"),
+                                        );
+                                      },
+                                    ),
+                            ),
                           ],
                         ),
                         AppSpacing.height12,
@@ -269,23 +273,27 @@ class _RideNavScreenState extends State<RideNavScreen> {
                         RideDetailsSection(),
                         AppSpacing.height30,
 
-                        rideController.rideStatus.value == RideStatus.atDropoff
-                            ? AppButton(
-                                height: 50.h,
-                                text1: "Request Payment".tr,
-                                fontSize: 16.sp,
-                                callback: () {
-                                  showPaymentOptionsSheet();
-                                },
-                              )
-                            : SizedBox(),
+                        Obx(
+                          () =>
+                              controller.rideStatus.value ==
+                                  RideStatus.atDropoff
+                              ? AppButton(
+                                  height: 50.h,
+                                  text1: "Request Payment".tr,
+                                  fontSize: 16.sp,
+                                  callback: () {
+                                    showPaymentOptionsSheet();
+                                  },
+                                )
+                              : SizedBox(),
+                        ),
 
                         Container(
                           alignment: Alignment.center,
                           child: TextButton(
                             onPressed: () {
-                              print(rideController.rideStatus);
-                              // rideController.rideStatus.value =
+                              print(controller.rideStatus);
+                              // controller.rideStatus.value =
                               //     RideStatus.enRouteToDropoff;
                               showCancelRideBottomSheet(context);
                             },
@@ -305,8 +313,8 @@ class _RideNavScreenState extends State<RideNavScreen> {
               ),
             ),
           ],
-        );
-      }),
+        ),
+      ),
     );
   }
 
