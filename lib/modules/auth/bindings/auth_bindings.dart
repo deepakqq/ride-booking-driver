@@ -5,10 +5,7 @@ import 'package:get/get.dart';
 class AuthBinding extends Bindings {
   @override
   void dependencies() {
-    // Repository inject first
     Get.lazyPut<AuthRepository>(() => AuthRepositoryImpl());
-
-    // Controller inject after repo
     Get.lazyPut<AuthController>(
       () => AuthController(authRepository: Get.find<AuthRepository>()),
     );

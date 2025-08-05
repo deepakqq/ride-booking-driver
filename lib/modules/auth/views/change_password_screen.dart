@@ -1,5 +1,5 @@
 import 'package:annale_driver/modules/auth/views/signup_screen.dart';
-import 'package:annale_driver/modules/auth/views/verification_screen.dart';
+import 'package:annale_driver/core/routes/app_routes.dart';
 import 'package:annale_driver/modules/auth/widgets/auth_header.dart';
 import 'package:annale_driver/modules/auth/widgets/login_singup_text.dart';
 import 'package:annale_driver/core/values/app_images.dart';
@@ -56,7 +56,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               AppButton(
                 text1: "Send Code".tr,
                 callback: () {
-                  Get.to(() => VerificationScreen());
+                  Get.toNamed(AppRoutes.verification);
                 },
               ),
               SizedBox(height: 24.h),

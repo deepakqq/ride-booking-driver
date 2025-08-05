@@ -1,5 +1,5 @@
-import 'package:annale_driver/modules/auth/views/forgot_password_screen.dart';
-import 'package:annale_driver/modules/auth/views/signup_screen.dart';
+import 'package:annale_driver/core/routes/app_routes.dart';
+import 'package:annale_driver/core/routes/app_routes.dart';
 import 'package:annale_driver/modules/auth/widgets/app_social_btn.dart';
 import 'package:annale_driver/modules/auth/widgets/auth_header.dart';
 import 'package:annale_driver/modules/auth/widgets/login_singup_text.dart';
@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => ForgotPasswordScreen());
+                      Get.toNamed(AppRoutes.forgotPassword);
                     },
                     child: AppText(
                       text: "Forgot Password?".tr,
@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   LoginSingupText(
                     callback: () {
-                      Get.off(() => SignupScreen());
+                      Get.offAndToNamed(AppRoutes.register);
                     },
                     firstText: "First time here?".tr,
                     secondText: "SIGN UP".tr,

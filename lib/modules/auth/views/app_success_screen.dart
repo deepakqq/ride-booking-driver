@@ -1,3 +1,4 @@
+import 'package:annale_driver/core/model/app_success_screen_arg.dart';
 import 'package:annale_driver/core/routes/app_routes.dart';
 import 'package:annale_driver/core/theme/app_colors.dart';
 import 'package:annale_driver/core/values/app_images.dart';
@@ -17,9 +18,9 @@ class AppSuccessScreen extends StatefulWidget {
   final bool bgColorGreen;
   final String title;
   final String subtitle;
-  final String btnText;
+  String btnText;
   final showRemindMe;
-  const AppSuccessScreen({
+  AppSuccessScreen({
     super.key,
     this.btnText = "Done",
     this.showMessage = true,
@@ -35,6 +36,26 @@ class AppSuccessScreen extends StatefulWidget {
 }
 
 class _AppSuccessScreenState extends State<AppSuccessScreen> {
+  pritnArgs() {
+    AppSuccessScreenArg appSuccessScreenArg = Get.arguments;
+    var btnText = appSuccessScreenArg.btnText;
+    print(btnText);
+    print(btnText);
+    print(btnText);
+    print(btnText);
+    print(btnText);
+    print(btnText);
+    widget.btnText = btnText;
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    pritnArgs();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

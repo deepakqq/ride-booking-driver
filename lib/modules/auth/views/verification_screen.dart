@@ -1,4 +1,6 @@
-import 'package:annale_driver/modules/auth/views/app_success_screen.dart';
+import 'package:annale_driver/core/model/app_success_screen_arg.dart';
+import 'package:annale_driver/core/routes/app_routes.dart';
+import 'package:annale_driver/modules/auth/controllers/auth_controller.dart';
 import 'package:annale_driver/modules/auth/widgets/auth_header.dart';
 import 'package:annale_driver/modules/auth/widgets/otp_text_field.dart';
 import 'package:annale_driver/widgets/app_button.dart';
@@ -15,15 +17,15 @@ class VerificationScreen extends StatefulWidget {
 }
 
 class _VerificationScreenState extends State<VerificationScreen> {
+  AuthController authController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Center(
           child: ListView(
-            padding: EdgeInsets.all(16.w),
+            padding: EdgeInsets.symmetric(horizontal: 22.w),
             children: [
-              SizedBox(height: 24.h),
               AuthHeader(
                 showBackBtn: true,
                 titleBig: false,
@@ -38,7 +40,16 @@ class _VerificationScreenState extends State<VerificationScreen> {
               AppButton(
                 text1: "Verify".tr,
                 callback: () {
-                  Get.to(() => AppSuccessScreen(btnText: "Back to Log in"));
+                  if (authController.signUp == true) {
+                    Get.toNamed(AppRoutes.profileType);
+                  } else {
+                    Get.toNamed(
+                      AppRoutes.appSuccess,
+                      arguments: AppSuccessScreenArg(btnText: "Back to Log in"),
+
+                      // arguments: {"btnText": "Back to Log in"},
+                    );
+                  }
                 },
                 // callback: widget.onVerificationSuccess,
               ),

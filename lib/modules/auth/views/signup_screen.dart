@@ -1,4 +1,5 @@
 import 'package:annale_driver/core/routes/app_routes.dart';
+import 'package:annale_driver/modules/auth/controllers/auth_controller.dart';
 import 'package:annale_driver/modules/auth/views/login_screen.dart';
 import 'package:annale_driver/modules/auth/widgets/app_social_btn.dart';
 import 'package:annale_driver/modules/auth/widgets/auth_header.dart';
@@ -24,6 +25,7 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  AuthController authController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,6 +81,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     AppButton(
                       text1: "Sign Up".tr,
                       callback: () {
+                        authController.signUp.value = true;
                         Get.toNamed(AppRoutes.verifyOtp);
                       },
                     ),

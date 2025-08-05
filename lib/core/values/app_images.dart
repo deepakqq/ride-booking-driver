@@ -4,6 +4,10 @@ class AppImages {
   static const _icons = '$_base/icons';
   static const _obg = 'assets/images/onboarding';
 
+  // auth
+  static const profileTypeOne = '$_base/p-type1.png';
+  static const profileTypeTwo = '$_base/p-type2.png';
+
   // General
   static const logo = '$_base/logo.png';
   static const logoText = '$_base/logo-text.png';
@@ -30,9 +34,29 @@ class AppImages {
   static const iconSApple = '$_icons/icon_s_apple.png';
   static const iconSGoogle = '$_icons/icon_s_google.png';
   static const iconSFacebook = '$_icons/icon_s_facebook.png';
+  static const iconGender = '$_icons/icon-gender.png';
   static const iconPerson = '$_icons/icon_person.png';
+  static const iconBirth = '$_icons/icon-birth.png';
+  static const iconPlate = '$_icons/icon-plate.png';
+  static const iconBike10 = '$_icons/icon-bike10.png';
+  static const iconState = '$_icons/icon-state.png';
+  static const iconPinL = '$_icons/icon-pin.png';
+  static const iconStreet = '$_icons/icon-stree.png';
+  static const iconHouse = '$_icons/icon-house.png';
+  static const iconCity = '$_icons/icon-city.png';
+  static const iconBank = '$_icons/icon-bank.png';
+  static const iconPerson1 = '$_icons/icon-person.png';
+  static const iconAccountNumber = '$_icons/icon-account-nu.png';
+  static const iconRouteNumber = '$_icons/icon-route-nu.png';
+  static const iconBranch = '$_icons/icon-branch.png';
+  static const iconUploadDoc = '$_icons/icon-upload-doc.png';
+  static const iconCallAuth = '$_icons/icon-call-auth.png';
+  static const iconDesc = '$_icons/icon-desctiption.png';
+  static const iconEmailAuth = '$_icons/icon-email-auth.png';
   static const pType1 = '$_base/p-type1.png';
+  static const pType1S = '$_base/p-type1-s.png';
   static const pType2 = '$_base/p-type2.png';
+  static const pType2S = '$_base/p-type2-s.png';
 
   // payment section
   static const master = '$_base/master.png';

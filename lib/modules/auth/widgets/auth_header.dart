@@ -1,3 +1,4 @@
+import 'package:annale_driver/core/theme/app_colors.dart';
 import 'package:annale_driver/core/values/app_images.dart';
 import 'package:annale_driver/widgets/app_text.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class AuthHeader extends StatelessWidget {
   final bool showLogo;
   final bool showBackBtn;
   final bool titleBig;
+  final VoidCallback? onBackPress;
   const AuthHeader({
     Key? key,
     this.title = "Welcome Back",
@@ -23,6 +25,7 @@ class AuthHeader extends StatelessWidget {
     this.showLogo = true,
     this.showBackBtn = false,
     this.titleBig = true,
+    this.onBackPress,
   }) : super(key: key);
 
   @override
@@ -34,9 +37,11 @@ class AuthHeader extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               GestureDetector(
-                onTap: () {
-                  Get.back();
-                },
+                onTap: onBackPress != null
+                    ? onBackPress
+                    : () {
+                        Get.back();
+                      },
                 child: Container(
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
@@ -60,7 +65,7 @@ class AuthHeader extends StatelessWidget {
                 width: 100.w, // approx .27 of design width
               )
             : SizedBox(height: 65.h),
-        if (showTitle) SizedBox(height: 12.h),
+        // if (showTitle) SizedBox(height: 12.h),s
         if (showTitle)
           AppText(
             text: title.tr,

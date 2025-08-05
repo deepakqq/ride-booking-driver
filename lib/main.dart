@@ -3,6 +3,7 @@ import 'package:annale_driver/core/controllers/theme_controller.dart';
 import 'package:annale_driver/core/routes/app_routes.dart';
 import 'package:annale_driver/core/translations/language_controller.dart';
 import 'package:annale_driver/core/translations/translations.dart';
+import 'package:annale_driver/modules/auth/views/profile_type_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
           // initialBinding: AppB,
           themeMode: ThemeController.to.themeMode,
           // home: SplashScreen(),
-          // home: Mymap(),
+          // home: ProfileTypeScreen(),
           initialRoute: AppRoutes.splash,
           getPages: AppPages.routes,
         );

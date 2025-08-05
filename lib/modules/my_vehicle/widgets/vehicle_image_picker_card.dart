@@ -1,3 +1,5 @@
+import 'package:annale_driver/core/theme/app_colors.dart';
+import 'package:annale_driver/core/theme/app_gradient.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dotted_border/dotted_border.dart';
@@ -23,8 +25,12 @@ class VehicleImagePickerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.primary.withValues(alpha: .3),
+        borderRadius: BorderRadius.circular(borderRadiusValue.r),
+      ),
+
       child: GestureDetector(
         onTap: onTap,
         child: DottedBorder(
@@ -40,7 +46,6 @@ class VehicleImagePickerCard extends StatelessWidget {
             width: cardSize.w,
             height: cardSize.h,
             decoration: BoxDecoration(
-              color: Colors.white,
               borderRadius: BorderRadius.circular(borderRadiusValue.r),
             ),
             child: imagePath != null && imagePath!.isNotEmpty
@@ -68,10 +73,12 @@ class VehicleImagePickerCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Icon(
-          Icons.cloud_upload_outlined,
-          size: AppFonts.size32,
-          color: Colors.grey.shade600,
+        Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: AppGradients.green,
+          ),
+          child: Icon(Icons.add, size: AppFonts.size32, color: Colors.white),
         ),
       ],
     );
