@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Ann Ale Driver',
           theme: ThemeData(
+            appBarTheme: AppBarTheme(surfaceTintColor: Colors.white),
             scaffoldBackgroundColor: Colors.white,
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           ),

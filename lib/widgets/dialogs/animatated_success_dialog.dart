@@ -9,13 +9,13 @@ import 'package:annale_driver/core/values/app_spacing.dart';
 
 class SuccessDialog extends StatelessWidget {
   final String message;
-  final String lottieAssetPath;
+  // final String lottieAssetPath;
   final VoidCallback? onDismiss;
 
   const SuccessDialog({
     super.key,
     required this.message,
-    required this.lottieAssetPath,
+    // required this.lottieAssetPath,
     this.onDismiss,
   });
 
@@ -71,7 +71,7 @@ class SuccessDialog extends StatelessWidget {
 void showAnimatadSuccessDialog(
   BuildContext context, {
   required String message,
-  required String lottieAssetPath,
+  // required String lottieAssetPath,
   VoidCallback? onDismiss,
 }) {
   showDialog(
@@ -79,7 +79,7 @@ void showAnimatadSuccessDialog(
     builder: (BuildContext context) {
       return SuccessDialog(
         message: message,
-        lottieAssetPath: lottieAssetPath,
+        // lottieAssetPath: lottieAssetPath,
         onDismiss: onDismiss,
       );
     },

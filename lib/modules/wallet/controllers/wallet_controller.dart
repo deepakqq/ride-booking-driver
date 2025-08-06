@@ -15,6 +15,8 @@ class WalletController extends GetxController {
 
   RxInt itemsLength = 4.obs;
 
+  RxBool showSelectBankSection = false.obs;
+
   List<Map<String, String?>> paymentHistoryData = [
     {
       'bigText': '123 Main St to 456 Oak Ave',

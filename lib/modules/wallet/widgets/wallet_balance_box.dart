@@ -1,4 +1,5 @@
 import 'package:annale_driver/core/values/app_spacing.dart';
+import 'package:annale_driver/modules/wallet/controllers/wallet_controller.dart';
 import 'package:annale_driver/modules/wallet/views/withdraw_screen.dart';
 import 'package:annale_driver/widgets/app_text.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ class WalletBalanceBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WalletController walletController = Get.find();
     return Container(
       // padding: EdgeInsets.only(top: 125, right: 8, bottom: 16, left: 16),
       height: Get.height * .2,

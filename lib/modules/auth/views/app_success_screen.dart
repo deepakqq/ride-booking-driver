@@ -37,16 +37,19 @@ class AppSuccessScreen extends StatefulWidget {
 
 class _AppSuccessScreenState extends State<AppSuccessScreen> {
   pritnArgs() {
-    AppSuccessScreenArg appSuccessScreenArg = Get.arguments;
-    var btnText = appSuccessScreenArg.btnText;
-    print(btnText);
-    print(btnText);
-    print(btnText);
-    print(btnText);
-    print(btnText);
-    print(btnText);
-    widget.btnText = btnText;
-    setState(() {});
+    if (Get.arguments != null) {
+      AppSuccessScreenArg appSuccessScreenArg = Get.arguments;
+      var btnText = appSuccessScreenArg.btnText;
+
+      print(btnText);
+      print(btnText);
+      print(btnText);
+      print(btnText);
+      print(btnText);
+      print(btnText);
+      widget.btnText = btnText;
+      setState(() {});
+    }
   }
 
   @override
@@ -99,6 +102,7 @@ class _AppSuccessScreenState extends State<AppSuccessScreen> {
                 callback: () {
                   if (widget.btnText == "Back to Log in") {
                     Get.offNamed(AppRoutes.login);
+                    // Get.toNamed(page)
 
                     return;
                   }

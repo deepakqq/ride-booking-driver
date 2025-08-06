@@ -12,11 +12,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class WalletsScreen extends GetView<WalletController> {
+class WalletsScreen extends StatelessWidget {
   const WalletsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    WalletController controller = Get.put(WalletController());
     return Scaffold(
       body: Padding(
         padding: AppSpacing.screenPadding,

@@ -155,7 +155,11 @@ class BusinessDetailsCard extends StatelessWidget {
                 // Total Bikes
                 Row(
                   children: [
-                    Image.asset(AppImages.QR, height: 30.r, width: 30.r),
+                    Image.asset(
+                      AppImages.iconBike19,
+                      height: 30.r,
+                      width: 30.r,
+                    ),
                     AppSpacing.width16,
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -195,7 +199,7 @@ class BusinessDetailsCard extends StatelessWidget {
                       ],
                     ),
                     AppSpacing.width16,
-                    Image.asset(AppImages.aBank, height: 30.r, width: 30.r),
+                    Image.asset(AppImages.iconJoin, height: 30.r, width: 30.r),
                   ],
                 ),
               ],

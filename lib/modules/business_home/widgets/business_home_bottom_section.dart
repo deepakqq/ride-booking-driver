@@ -46,7 +46,7 @@ class _BusinessHomeBottomSectionState extends State<BusinessHomeBottomSection> {
           SizedBox(
             // height: 110.h,
             child: BusinessDetailsCard(
-              companyLogoAsset: AppImages.aBank,
+              companyLogoAsset: AppImages.iconCLogo,
               companyName: "companyName",
               totalTrips: 1200,
               totalBikes: 2,
@@ -61,13 +61,18 @@ class _BusinessHomeBottomSectionState extends State<BusinessHomeBottomSection> {
               children: [
                 Expanded(
                   child: TotalCard(
+                    iconPath: AppImages.iconMoneyGrid,
                     title: "Total Earnings",
                     earningsAmount: "30,000 HTG",
                   ),
                 ),
                 AppSpacing.width16,
                 Expanded(
-                  child: TotalCard(title: "Balance", earningsAmount: "200 HTG"),
+                  child: TotalCard(
+                    iconPath: AppImages.iconCoins,
+                    title: "Balance",
+                    earningsAmount: "200 HTG",
+                  ),
                 ),
               ],
             ),

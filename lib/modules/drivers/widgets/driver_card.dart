@@ -1,4 +1,5 @@
 import 'package:annale_driver/core/theme/app_colors.dart';
+import 'package:annale_driver/core/values/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,6 +19,7 @@ class DriverCard extends StatelessWidget {
   final VoidCallback? onDelete;
   final VoidCallback? onViewEarning;
   final VoidCallback? onTrack;
+  final VoidCallback? onTap;
 
   const DriverCard({
     super.key,
@@ -29,109 +31,119 @@ class DriverCard extends StatelessWidget {
     this.onDelete,
     this.onViewEarning,
     this.onTrack,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 16.h),
-      width: double.infinity,
-      padding: EdgeInsets.all(AppSpacing.md),
-      decoration: BoxDecoration(
-        color: AppColors.greenDarkBg1,
-        borderRadius: AppRadius.r16,
-        border: Border.all(color: Colors.black, width: .3),
-      ),
-      child: Column(
-        children: [
-          // Top Section: Profile, Details, Icons
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Profile Image
-              CircleAvatar(
-                radius: 40.r,
-                backgroundImage: AssetImage(profileImage),
-              ),
-              AppSpacing.width16,
-              // Details
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        AppText(
-                          text: driverName,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                        Row(
-                          children: [
-                            GestureDetector(
-                              onTap: onEdit,
-                              child: Icon(
-                                Icons.edit_outlined,
-                                color: Colors.white,
-                                size: AppFonts.size20,
-                              ),
-                            ),
-                            AppSpacing.width8,
-                            GestureDetector(
-                              onTap: onDelete,
-                              child: Icon(
-                                Icons.delete_outline,
-                                color: Colors.white,
-                                size: AppFonts.size20,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: EdgeInsets.only(bottom: 16.h),
+        width: double.infinity,
+        padding: EdgeInsets.all(AppSpacing.md),
+        decoration: BoxDecoration(
+          color: AppColors.greenDarkBg1,
+          borderRadius: AppRadius.r16,
+          border: Border.all(color: Colors.black, width: .3),
+        ),
+        child: Column(
+          children: [
+            // Top Section: Profile, Details, Icons
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Profile Image
+                Container(
+                  height: 80.h,
+                  width: 50.w,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50.r),
+                    image: DecorationImage(
+                      image: AssetImage(profileImage),
+                      fit: BoxFit.cover,
                     ),
-                    AppSpacing.height4,
-                    AppText(
-                      text: phoneNumber,
-                      fontSize: 14,
-                      color: Colors.white,
-                    ),
-                    AppSpacing.height4,
-                    AppText(text: email, fontSize: 14, color: Colors.white),
-                  ],
+                  ),
+                  // radius: 40.r,
                 ),
-              ),
-            ],
-          ),
-          AppSpacing.height16,
-          // Bottom Section: Buttons
-          Row(
-            children: [
-              Expanded(
-                child: AppButton(
-                  text1: "View Earning",
-                  callback: onViewEarning,
+                AppSpacing.width16,
+                // Details
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          AppText(
+                            text: driverName,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                          Row(
+                            children: [
+                              GestureDetector(
+                                onTap: onEdit,
+                                child: Image.asset(
+                                  AppImages.iconEdit,
+                                  height: 22.h,
+                                ),
+                              ),
+                              AppSpacing.width8,
+                              GestureDetector(
+                                onTap: onDelete,
+                                child: Image.asset(
+                                  AppImages.iconDelete1,
+                                  height: 22.h,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      AppSpacing.height4,
+                      AppText(
+                        text: phoneNumber,
+                        fontSize: 14,
+                        color: Colors.white,
+                      ),
+                      AppSpacing.height4,
+                      AppText(text: email, fontSize: 14, color: Colors.white),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            AppSpacing.height16,
+            // Bottom Section: Buttons
+            Row(
+              children: [
+                Expanded(
+                  child: AppButton(
+                    text1: "View Earning",
+                    callback: onViewEarning,
 
-                  radius: 20.r,
-                  height: 45.h,
-                  fontSize: 14,
+                    radius: 20.r,
+                    height: 35.h,
+                    fontSize: 14,
+                  ),
                 ),
-              ),
-              AppSpacing.width16,
-              Expanded(
-                child: AppButton(
-                  fontSize: 14,
-                  text1: "Track",
-                  callback: onTrack,
+                AppSpacing.width16,
+                Expanded(
+                  child: AppButton(
+                    fontSize: 14,
+                    text1: "Track",
+                    callback: onTrack,
 
-                  radius: 20.r,
-                  height: 45.h,
+                    radius: 20.r,
+                    height: 35.h,
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

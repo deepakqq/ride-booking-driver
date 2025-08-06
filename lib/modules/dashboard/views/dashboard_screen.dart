@@ -12,21 +12,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:annale_driver/modules/dashboard/controllers/dashboard_controller.dart';
 
-class DashboardScreen extends StatefulWidget {
-  @override
-  State<DashboardScreen> createState() => _DashboardScreenState();
-}
+class DashboardScreen extends GetView<DashboardController> {
+  final AuthController authController = Get.find();
 
-class _DashboardScreenState extends State<DashboardScreen> {
-  final controller = Get.put(DashboardController());
-
-  final walletController = Get.put(WalletController());
-
-  AuthController authController = Get.find();
-
-  List<Widget> pages = [];
-  setPages() {
-    pages = authController.userType == UserType.driver
+  List<Widget> getPages(UserType userType) {
+    return userType == UserType.driver
         ? [HomeScreen(), RidesScreen(), WalletsScreen(), AccountScreen()]
         : [
             BusinessHomeScreen(),
@@ -37,14 +27,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    setPages();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final List<Widget> pages = getPages(authController.userType);
     return Obx(
       () => Scaffold(
         extendBody: true,

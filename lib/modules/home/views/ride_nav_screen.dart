@@ -213,7 +213,6 @@ class _RideNavScreenState extends State<RideNavScreen> {
                                           context,
                                           message:
                                               "An SOS message and your ride details have been sent to the Ann Ale team.",
-                                          lottieAssetPath: "assets/check.json",
                                         );
                                       },
                                       icon: AppImages.iconSos,

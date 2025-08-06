@@ -12,6 +12,8 @@ class AppNormalAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool screenBGColor;
   final showNotificationDeleteIcon;
   final VoidCallback? notificationDeleteCallback;
+  final bool showAddVehicleBtn;
+  final VoidCallback? onVehicleAdd;
 
   const AppNormalAppBar({
     Key? key,
@@ -22,6 +24,8 @@ class AppNormalAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.screenBGColor = false,
     this.showNotificationDeleteIcon = false,
     this.notificationDeleteCallback,
+    this.onVehicleAdd,
+    this.showAddVehicleBtn = false,
   }) : super(key: key);
 
   @override
@@ -34,6 +38,15 @@ class AppNormalAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: GestureDetector(
                   onTap: notificationDeleteCallback,
                   child: Image.asset(AppImages.iconDelete, height: 24),
+                ),
+              )
+            : SizedBox(),
+        showAddVehicleBtn
+            ? Padding(
+                padding: EdgeInsets.only(right: 22.w),
+                child: GestureDetector(
+                  onTap: onVehicleAdd,
+                  child: Icon(Icons.add, size: 35.r, color: AppColors.textDark),
                 ),
               )
             : SizedBox(),

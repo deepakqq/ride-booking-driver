@@ -13,10 +13,13 @@ import 'package:annale_driver/modules/auth/views/profile_details_screen.dart';
 import 'package:annale_driver/modules/auth/views/profile_type_screen.dart';
 import 'package:annale_driver/modules/auth/views/signup_screen.dart';
 import 'package:annale_driver/modules/auth/views/verification_screen.dart';
+import 'package:annale_driver/modules/business_home/bindings/business_home_binding.dart';
 import 'package:annale_driver/modules/dashboard/bindings/dashboard_binding.dart';
 import 'package:annale_driver/modules/dashboard/views/dashboard_screen.dart';
+import 'package:annale_driver/modules/home/controllers/ride_controller.dart';
 import 'package:annale_driver/modules/onboarding/views/onboarding_screen.dart';
 import 'package:annale_driver/modules/splash/views/splash_screen.dart';
+import 'package:annale_driver/modules/track/views/track_screen.dart';
 import 'package:annale_driver/modules/wallet/bindings/wallet_binding.dart';
 import 'package:annale_driver/modules/wallet/views/wallets_screen.dart';
 import 'package:get/get.dart';
@@ -137,11 +140,11 @@ class AppPages {
       page: () => const VerificationScreen(),
       binding: AuthBinding(),
     ),
+    GetPage(name: AppRoutes.verification, page: () => const TrackScreen()),
     GetPage(
       name: AppRoutes.dashboard,
       page: () => DashboardScreen(),
-      binding: DashboardBinding(),
-      // bindings: [DashboardBinding(), AccountBinding()],
+      bindings: [DashboardBinding(), BusinessHomeBinding(), WalletBinding()],
     ),
     GetPage(
       name: AppRoutes.onboarding,

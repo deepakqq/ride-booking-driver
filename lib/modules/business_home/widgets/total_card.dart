@@ -1,3 +1,4 @@
+import 'package:annale_driver/core/theme/app_gradient.dart';
 import 'package:annale_driver/core/values/app_spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,13 +6,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class TotalCard extends StatelessWidget {
   final String title;
   final String earningsAmount;
-  final String? iconPath;
+  final String iconPath;
 
   const TotalCard({
     super.key,
     required this.title,
     required this.earningsAmount,
-    this.iconPath,
+    required this.iconPath,
   });
 
   @override
@@ -37,31 +38,27 @@ class TotalCard extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.center,
+            padding: EdgeInsets.all(6.r),
 
-            width: 35.r,
-            height: 35.r,
+            width: 38.r,
+            height: 38.r,
             decoration: BoxDecoration(
-              color: const Color(0xFF4CAF50),
+              // color: const Color(0xFF4CAF50),
+              gradient: AppGradients.green,
               shape: BoxShape.circle,
             ),
-            child: iconPath != null
-                ? Image.asset(
-                    iconPath!,
-                    fit: BoxFit.contain,
-                    color: Colors.white,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Icon(
-                        Icons.attach_money_rounded,
-                        color: Colors.white,
-                        size: 20.r,
-                      );
-                    },
-                  )
-                : Icon(
-                    Icons.attach_money_rounded,
-                    color: Colors.white,
-                    size: 20.r,
-                  ),
+            child: Image.asset(
+              iconPath,
+              fit: BoxFit.contain,
+              color: Colors.white,
+              errorBuilder: (context, error, stackTrace) {
+                return Icon(
+                  Icons.attach_money_rounded,
+                  color: Colors.white,
+                  size: 20.r,
+                );
+              },
+            ),
           ),
           AppSpacing.height4,
           Text(

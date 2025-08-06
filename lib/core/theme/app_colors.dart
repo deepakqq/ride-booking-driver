@@ -8,6 +8,7 @@ class AppColors {
   // Neutral
   static const greyLight = Color(0xFFDFDFDF);
   static const greyDark = Color(0xFF333333);
+  static Color textfieldBG = Color(0xFFd9d9d9).withValues(alpha: .5);
 
   // Primary
   static const primary = Color(0xFF7ADA3F);

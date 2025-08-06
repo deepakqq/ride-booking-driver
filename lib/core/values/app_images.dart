@@ -116,6 +116,13 @@ class AppImages {
   static const iconHelp = '$_icons/icon-help.png';
   static const iconEdit = '$_icons/icon-edit.png';
   static const iconLocationPin = '$_icons/icon-location-pin.png';
+  static const iconEditB = '$_icons/icon-edit-b.png';
+  static const iconDelete1 = '$_icons/icon-delete1.png';
+  static const iconCLogo = '$_icons/company-logo.png';
+  static const iconJoin = '$_icons/icon-join.png';
+  static const iconBike19 = '$_icons/icon-bike19.png';
+  static const iconMoneyGrid = '$_icons/icon-money-grid.png';
+  static const iconCoins = '$_icons/icon-coins.png';
   // motificaiont
   // icon
   static const iconDelete = '$_icons/icon-delete.png';

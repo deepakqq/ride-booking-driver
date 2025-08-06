@@ -1,0 +1,226 @@
+import 'package:annale_driver/core/theme/app_colors.dart';
+import 'package:annale_driver/core/theme/app_gradient.dart';
+import 'package:annale_driver/core/values/app_redius.dart';
+import 'package:annale_driver/core/values/app_spacing.dart';
+import 'package:annale_driver/modules/home/widgets/show_rating_star.dart';
+import 'package:annale_driver/modules/rides/views/review_screen.dart';
+import 'package:annale_driver/widgets/app_button.dart';
+import 'package:annale_driver/widgets/app_text.dart';
+import 'package:annale_driver/widgets/ride/ride_action_bar.dart';
+import 'package:annale_driver/widgets/ride/ride_location_tag.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+class BookingCard extends StatelessWidget {
+  final String title;
+  final String dateTime;
+  final String pickup;
+  final String drop;
+  final String price;
+  final String vehicleImage;
+  final String driverImage;
+  final Widget statusButton;
+  final bool track;
+  final String status;
+  final showSmallForRating;
+  final VoidCallback? onVeiwBooking;
+
+  const BookingCard({
+    super.key,
+    this.onVeiwBooking,
+    required this.title,
+    required this.dateTime,
+    required this.pickup,
+    required this.drop,
+    required this.price,
+    required this.vehicleImage,
+    required this.driverImage,
+    required this.statusButton,
+    this.status = '',
+    this.track = false,
+    this.showSmallForRating = true,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          margin: EdgeInsets.only(bottom: 8.h),
+          padding: EdgeInsets.all(12.h),
+          decoration: BoxDecoration(
+            color: Color(0xff24422C),
+            borderRadius: AppRadius.r12,
+            border: Border.all(color: Color(0xff389458)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 80.h,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppText(
+                      text: dateTime,
+                      fontSize: 12.sp,
+                      color: Colors.white,
+                    ),
+                    AppSpacing.height4,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        AppText(
+                          text: title,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.primary,
+                          fontSize: 12.sp,
+                        ),
+                      ],
+                    ),
+                    AppSpacing.height4,
+                    if (status != "going")
+                      Row(
+                        children: [
+                          Text(
+                            '$price',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.sp,
+                            ),
+                          ),
+                        ],
+                      ),
+                    AppSpacing.height4,
+                  ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: RideLocationTag(text: pickup, color: Colors.red),
+                  ),
+                  Icon(Icons.arrow_forward, size: 18, color: Color(0xffE7B84C)),
+                  Expanded(
+                    child: RideLocationTag(text: drop, color: Colors.purple),
+                  ),
+                ],
+              ),
+              AppSpacing.height12,
+              status == "canceled"
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 16.w,
+                            vertical: 3.h,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Color(0xff8D3737),
+                            borderRadius: AppRadius.r20,
+                          ),
+                          child: AppText(
+                            text: "Canceled".tr,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    )
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            alignment: Alignment.center,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 8.h,
+                              vertical: 4.h,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Color(0xff37598D),
+                              borderRadius: AppRadius.r20,
+                            ),
+                            child: Text(
+                              " ⭐️⭐️⭐️⭐️ 4 star",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14.sp,
+                              ),
+                            ),
+                          ),
+                        ),
+                        AppSpacing.width16,
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: onVeiwBooking,
+                            child: Container(
+                              alignment: Alignment.center,
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 8.h,
+                                vertical: 4.h,
+                              ),
+                              decoration: BoxDecoration(
+                                gradient: AppGradients.green,
+                                borderRadius: AppRadius.r20,
+                              ),
+                              child: Text(
+                                "View Full Details".tr,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14.sp,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+            ],
+          ),
+        ),
+        Positioned(
+          top: 8.h,
+          right: 8.w,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(width: 80.w, height: 73.h),
+              Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 8.h),
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage(driverImage),
+                    radius: 23.r,
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Align(
+                      child: ShowRatingStar(
+                        rating: "4.5",
+                        showSmall: showSmallForRating,
+                      ),
+                      alignment: Alignment.bottomCenter,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}

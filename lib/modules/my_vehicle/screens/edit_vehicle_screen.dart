@@ -17,9 +17,11 @@ import 'package:annale_driver/widgets/app_button.dart';
 
 class EditVehicleScreen extends StatefulWidget {
   final String vehicleImagePath;
+  final bool isEdit;
 
   const EditVehicleScreen({
     super.key,
+    this.isEdit = true,
     this.vehicleImagePath = 'assets/images/bike-details.png',
   });
 
@@ -42,7 +44,9 @@ class _EditVehicleScreenState extends State<EditVehicleScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppNormalAppBar(title: "Edit Vehicle Details".tr),
+      appBar: AppNormalAppBar(
+        title: widget.isEdit ? "Edit Vehicle Details".tr : "Add A Vehicle",
+      ),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -245,7 +249,7 @@ class _EditVehicleScreenState extends State<EditVehicleScreen> {
             showAnimatadSuccessDialog(
               context,
               message: "You Has Been Successfully Edited This Vehicle.".tr,
-              lottieAssetPath: 'assets/ani-check.json',
+
               onDismiss: () {
                 Navigator.of(context).pop();
               },

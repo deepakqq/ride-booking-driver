@@ -115,11 +115,6 @@ class _ProfileTypeScreenState extends State<ProfileTypeScreen> {
           text1: "Next",
           callback: () {
             Get.toNamed(AppRoutes.profileDetails);
-            // print(authController.userType);
-            // if (authController.userType == UserType.driver) {
-            //   // Get.toNamed(AppRoutes.driverProfileDetailsScreen);
-            //   Get.toNamed(AppRoutes.profileDetailsDriver);
-            // }
           },
         ),
       ),

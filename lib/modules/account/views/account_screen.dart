@@ -5,7 +5,9 @@ import 'package:annale_driver/modules/account/views/edit_screen.dart';
 import 'package:annale_driver/modules/account/widgets/account_option_tile.dart';
 import 'package:annale_driver/modules/account/widgets/profile_info_tile.dart';
 import 'package:annale_driver/modules/address/views/my_address_screen.dart';
+import 'package:annale_driver/modules/auth/controllers/auth_controller.dart';
 import 'package:annale_driver/modules/auth/views/change_password_screen.dart';
+import 'package:annale_driver/modules/business_my_vehicle/screens/business_my_vehicle_screen.dart';
 
 import 'package:annale_driver/modules/delete_account/screens/deactive_page1.dart';
 import 'package:annale_driver/modules/help_and_contact/views/help_emergency_screen.dart';
@@ -29,6 +31,7 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<AccountController>();
+    final authController = Get.find<AuthController>();
     // final dashboardController = Get.find<DashboardController>();
     return Padding(
       padding: AppSpacing.horizontalLG,
@@ -58,7 +61,11 @@ class AccountScreen extends StatelessWidget {
           }),
           AccountOptionTile(
             onTap: () {
-              Get.to(() => MyVehicleScreen());
+              if (authController.userType == UserType.driver) {
+                Get.to(() => MyVehicleScreen());
+              } else {
+                Get.to(() => BusinessMyVehicleScreen());
+              }
               // Get.to(() => MyAddressScreen());
               // dashboardController.currentIndex.value = 2;
             },
