@@ -1,8 +1,10 @@
 import 'package:annale_driver/core/values/app_redius.dart';
 import 'package:annale_driver/widgets/app_text.dart';
+import 'package:annale_driver/widgets/upload_option_bottomsheet.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
 
 class AppImageUploadBox extends StatelessWidget {
@@ -38,7 +40,21 @@ class AppImageUploadBox extends StatelessWidget {
             ),
             SizedBox(height: 8.h),
             InkWell(
-              onTap: onTap ?? () {},
+              onTap:
+                  onTap ??
+                  () {
+                    print('object');
+                    Get.bottomSheet(
+                      UploadOptionBottomSheet(
+                        onCameraTap: () {
+                          Get.back();
+                        },
+                        onFileTap: () {
+                          Get.back();
+                        },
+                      ),
+                    );
+                  },
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 4.h),
                 decoration: BoxDecoration(

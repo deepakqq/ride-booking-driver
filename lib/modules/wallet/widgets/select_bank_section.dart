@@ -1,6 +1,11 @@
 import 'package:annale_driver/core/theme/app_colors.dart';
 import 'package:annale_driver/core/theme/app_gradient.dart';
 import 'package:annale_driver/core/values/app_spacing.dart';
+import 'package:annale_driver/modules/bank_account/controllers/payment_controller.dart';
+import 'package:annale_driver/modules/bank_account/models/card_model.dart';
+import 'package:annale_driver/modules/bank_account/views/add_account_screen.dart';
+import 'package:annale_driver/modules/bank_account/views/payment_screen.dart';
+import 'package:annale_driver/modules/bank_account/widgets/bank_account_tile.dart';
 import 'package:annale_driver/modules/wallet/widgets/wallet_balance_box.dart';
 import 'package:annale_driver/widgets/app_button.dart';
 import 'package:annale_driver/widgets/app_text.dart';
@@ -72,6 +77,7 @@ class _SelectBankSectionState extends State<SelectBankSection> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(PaymentController());
     return Scaffold(
       // backgroundColor: const Colors.w,
       body: SafeArea(
@@ -79,10 +85,108 @@ class _SelectBankSectionState extends State<SelectBankSection> {
           children: [
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 22.w),
-              child: WalletBalanceBox(),
+              child: Container(
+                // padding: EdgeInsets.only(top: 125, right: 8, bottom: 16, left: 16),
+                height: Get.height * .2,
+                width: Get.width,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xff7BDA40), Color(0xff2D6F3F)],
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 6,
+                      offset: Offset(3, 3),
+                      color: Colors.black.withValues(alpha: .2),
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(16),
+                ),
+
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Positioned(
+                      width: 233.48.w,
+                      height: 154,
+                      //top: 3,
+                      // right: 45,
+                      bottom: 30,
+                      right: 8,
+                      child: Image.asset(
+                        'assets/images/wallet-logo-bg.png',
+                        // height: 150,
+                        //width: 150,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+
+                    Align(
+                      alignment: Alignment.center,
+
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.w),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            AppText(
+                              text: "Withdrawn Amount".tr,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: Color(0xff151518),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                            ),
+                            AppText(
+                              text: "100.00 HTG",
+                              maxLines: 1,
+
+                              color: Color(0xff151518),
+                              fontWeight: FontWeight.w800,
+                              fontSize: 28,
+
+                              // overflow: TextOverflow.visible,
+                            ),
+
+                            AppSpacing.height14,
+                            Container(
+                              // width: Get.width * .4,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  elevation: 3,
+                                ),
+                                onPressed: () {
+                                  print('object');
+                                  Get.back();
+                                },
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    AppText(
+                                      text: "Change",
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
             AppSpacing.height16,
-            AppText(text: "Select Bank Account", fontWeight: FontWeight.bold),
+
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(top: 2),
@@ -106,58 +210,53 @@ class _SelectBankSectionState extends State<SelectBankSection> {
                   child: Column(
                     children: [
                       AppSpacing.height16,
-                      Container(
-                        width: Get.width - 100.w,
-
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 4.h,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all(color: AppColors.primary),
-                        ),
-                        child: AppText(
-                          text: _enteredNumber.isEmpty ? '0' : _enteredNumber,
-                          align: TextAlign.center,
-                          fontSize: 28.sp,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.primaryDark,
-                        ),
+                      AppText(
+                        text: "Select Bank Account",
+                        fontWeight: FontWeight.bold,
                       ),
+                      AppSpacing.height16,
+
                       const SizedBox(height: 40),
                       Expanded(
                         child: Container(
                           decoration: BoxDecoration(),
-                          child: GridView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 3,
-                                  crossAxisSpacing: 25.0,
-                                  mainAxisSpacing: 25.0,
-                                  childAspectRatio: 1.5,
-                                ),
-                            itemCount: 12,
-                            itemBuilder: (context, index) {
-                              if (index < 9) {
-                                return _buildNumberButton('${index + 1}');
-                              } else if (index == 9) {
-                                return _buildNumberButton('.');
-                              } else if (index == 10) {
-                                return _buildNumberButton('0');
-                              } else {
-                                return _buildBackspaceButton();
-                              }
-                            },
+                          child: Column(
+                            children: [
+                              Obx(() {
+                                return ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: controller.banks.length,
+                                  itemBuilder: (context, index) {
+                                    final card = controller.banks[index];
+                                    return BankAccountTile(
+                                      card: card,
+                                      isSelected:
+                                          controller.selectedCardId.value ==
+                                          card.id,
+                                      onTap: () =>
+                                          controller.selectCard(card.id),
+                                    );
+                                  },
+                                );
+                              }),
+                            ],
                           ),
                         ),
                       ),
                       const SizedBox(height: 30),
                       AppButton(
-                        text1: "CONTINUE",
+                        callback: () {
+                          Get.to(() => AddAccountScreen());
+                        },
+                        text1: "ADD NEW BANK ACCOUNT",
+                        radius: 50,
+                        height: 45.h,
+                        showBorder: true,
+                        fontSize: 14.sp,
+                      ),
+                      AppSpacing.height8,
+                      AppButton(
+                        text1: "WITHDRAW",
                         radius: 50,
                         height: 45.h,
                         showBorder: true,

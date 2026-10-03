@@ -151,14 +151,12 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
         child: AppButton(
           text1: "Next".tr,
           callback: () {
-            if (authController.signUp == true) {
-              if (authController.userType == UserType.driver) {
-                Get.toNamed(AppRoutes.addressDetails);
-              }
-              if (authController.userType == UserType.businessOwner) {
-                Get.toNamed(AppRoutes.businessDetails);
-              }
-            } else {}
+            if (authController.userType == UserType.driver) {
+              Get.toNamed(AppRoutes.addressDetails);
+            }
+            if (authController.userType == UserType.businessOwner) {
+              Get.toNamed(AppRoutes.businessDetails);
+            }
           },
         ),
       ),

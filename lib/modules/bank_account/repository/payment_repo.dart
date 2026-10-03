@@ -20,6 +20,12 @@ class PaymentRepo {
         accountNumber: '**** **** **** 4567',
         imagePath: AppImages.uBank,
       ),
+      BankModel(
+        bankName: "MonCash",
+        id: '2',
+        accountNumber: '**** **** **** 4567',
+        imagePath: "assets/images/icons/icon-momo-c.png",
+      ),
     ];
   }
 }

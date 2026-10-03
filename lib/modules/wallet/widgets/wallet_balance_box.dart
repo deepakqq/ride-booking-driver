@@ -87,6 +87,7 @@ class WalletBalanceBox extends StatelessWidget {
                         elevation: 3,
                       ),
                       onPressed: () {
+                        print('object');
                         Get.to(WithdrawScreen());
                       },
                       child: Row(

@@ -42,6 +42,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 callback: () {
                   if (authController.signUp == true) {
                     Get.toNamed(AppRoutes.profileType);
+                    authController.signUp.value = false;
                   } else {
                     Get.toNamed(
                       AppRoutes.appSuccess,

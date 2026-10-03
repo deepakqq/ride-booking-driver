@@ -1,5 +1,6 @@
 import 'package:annale_driver/modules/auth/controllers/auth_controller.dart';
 import 'package:annale_driver/modules/auth/repository/auth_repository.dart';
+import 'package:annale_driver/modules/business_home/controllers/business_home_controller.dart';
 import 'package:get/get.dart';
 
 class AppBinding extends Bindings {
@@ -10,5 +11,6 @@ class AppBinding extends Bindings {
       AuthController(authRepository: Get.find<AuthRepository>()),
       permanent: true,
     );
+    Get.put(BusinessHomeController(), permanent: true);
   }
 }

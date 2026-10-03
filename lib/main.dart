@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
           themeMode: ThemeController.to.themeMode,
           // home: SplashScreen(),
           // home: ProfileTypeScreen(),
+          initialBinding: AppBinding(),
           initialRoute: AppRoutes.splash,
           getPages: AppPages.routes,
         );

@@ -16,3 +16,10 @@ class AppSuccessScreenArg {
         "Don't worry, we'll let you know if there's a\nproblem with your account",
   });
 }
+
+enum CommingFrom { changePasswordScree, singUpScree }
+
+class ChangePasswordScreenArg {
+  final CommingFrom commingFrom;
+  ChangePasswordScreenArg({this.commingFrom = CommingFrom.singUpScree});
+}

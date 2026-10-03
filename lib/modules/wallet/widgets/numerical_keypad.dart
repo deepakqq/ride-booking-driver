@@ -1,6 +1,7 @@
 import 'package:annale_driver/core/theme/app_colors.dart';
 import 'package:annale_driver/core/theme/app_gradient.dart';
 import 'package:annale_driver/core/values/app_spacing.dart';
+import 'package:annale_driver/modules/wallet/views/select_bank_screen.dart';
 import 'package:annale_driver/modules/wallet/widgets/wallet_balance_box.dart';
 import 'package:annale_driver/widgets/app_button.dart';
 import 'package:annale_driver/widgets/app_text.dart';
@@ -156,6 +157,9 @@ class _NumericalKeypadWidgetState extends State<NumericalKeypadWidget> {
                       ),
                       const SizedBox(height: 30),
                       AppButton(
+                        callback: () {
+                          Get.to(() => SelectBankScreen());
+                        },
                         text1: "CONTINUE",
                         radius: 50,
                         height: 45.h,
